@@ -137,7 +137,7 @@ graph.traverseDfs('v5', v => console.log(v.getKey(), v.getValue()));
 
 **.traverse(key, cb, type)**
 
-traversing the graph using dfs or bfs approach. Default is BFS.
+traversing the graph using `dfs` or `bfs` approach. Default is `bfs`.
 ```js
 graph.traverse('v5', v => console.log(v.getKey(), v.getValue()));
 // v5 true
