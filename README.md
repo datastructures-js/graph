@@ -21,15 +21,21 @@ const directedGraph = graphFn({ directed: true });
 **.addVertex(key, value)** 
 
 adds a vertex object to the graph.
+Vertex object has the following api:
+
+**getKey()** get the vertex key.
+**getValue()** get the vertex value.
+**setValue(value)** sets (updates) the vertex value.
+
 ```javascript
-// building the graph in the diagram
+// adding vertices of the graph in the diagram
 graph.addVertex('v1', true);
 graph.addVertex('v2', true);
 graph.addVertex('v3', true);
 graph.addVertex('v4', true);
 graph.addVertex('v5', true);
 
-// building the directed graph in the diagram
+// adding vertices of the directed graph in the diagram
 directedGraph.addVertex('v1', true);
 directedGraph.addVertex('v2', true);
 directedGraph.addVertex('v3', true);
@@ -37,45 +43,59 @@ directedGraph.addVertex('v4', true);
 directedGraph.addVertex('v5', true);
 ```
 
-**.hasVertex(vertex)**
+**.hasVertex(key)**
 
 checks if the graph has a vertex
 ```javascript
-let check = graph.hasVertex('test'); // true
+console.log(graph.hasVertex('v1')); // true
 ```
 
-**.removeVertex(vertex)**
+**.removeVertex(key)**
 
-checks if the graph has a vertex
+removes a vertex from the graph
 ```javascript
 graph.removeVertex('test');
 graph.hasVertex('test'); // false
 ```
 
-**.addEdge(v1, v2, weight)** 
+**.addEdge(key1, key2, weight)**
 
 adds a weighted edge between two existing vertices.
 ```javascript
-graph.addVertex('v1');
-graph.addVertex('v2');
-graph.addEdge('v1', 'v2', 3)
+// adding edges of the graph in diagram
+graph.addEdge('v1', 'v2', 2);
+graph.addEdge('v2', 'v3', 3);
+graph.addEdge('v1', 'v3', 6);
+graph.addEdge('v2', 'v4', 1);
+graph.addEdge('v4', 'v3', 1);
+graph.addEdge('v4', 'v5', 4);
+graph.addEdge('v3', 'v5', 2);
+
+// adding edges of the directed graph in diagram
+directedGraph.addEdge('v1', 'v2', 2);
+directedGraph.addEdge('v1', 'v3', 3);
+directedGraph.addEdge('v1', 'v4', 1);
+directedGraph.addEdge('v2', 'v4', 1);
+directedGraph.addEdge('v3', 'v5', 2);
+directedGraph.addEdge('v4', 'v3', 1);
+directedGraph.addEdge('v4', 'v5', 4);
 ```
 
-**.hasEdge(v1, v2)**
+**.hasEdge(key1, key2)**
 
 checks if the graph has an edge between two exsiting vertices
 ```javascript
-let check = graph.hasEdge('v1', 'v2'); // true
+console.log(graph.hasEdge('v1', 'v2')); // true
 ```
 
 **.getWeight(v1, v2)** 
 
 returns the weight between two vertices
 ```javascript
-let w = graph.getWeight('v1', 'v2'); // 3
+console.log(graph.getWeight('v1', 'v2')); // 2
 ```
 
-**.removeEdge(v1, v2)**
+**.removeEdge(key1, key2)**
 
 removes an existing edge in the graph
 ```javascript
@@ -84,48 +104,42 @@ graph.hasEdge('v1', 'v2'); // false
 graph.hasEdge('v2', 'v1'); // false
 ```
 
-**.addPath(v1, v2, weight)** 
-
-adds an edge between two vertices and creates the vertices if one or both dont exist.
-```javascript
-// building the diagram graph
-graph.addPath('v1', 'v2', 2);
-graph.addPath('v2', 'v3', 3);
-graph.addPath('v1', 'v3', 6);
-graph.addPath('v2', 'v4', 1);
-graph.addPath('v4', 'v3', 1);
-graph.addPath('v4', 'v5', 4);
-graph.addPath('v3', 'v5', 2);
-```
-
 **.countVertices()** 
 
-returns the number of vertices in the graph.
+gets the number of vertices in the graph.
 ```javascript
-let count = graph.countVertices(); // 5
+console.log(graph.countVertices()); // 5
+console.log(directedGraph.countVertices()); // 5
 ```
 
-**.traverse(vertex, cb, type)** 
+**.dfsTraverse(key, cb)** 
+traverse the graph from a strating vertex using depth-first search and call cb for each vertex object.
+```js
+graph.traverseDfs('v1', v => console.log(v.getKey(), v.getValue()));
+// v1 true
+// v2 true
+// v3 true
+// v4 true
+// v5 true
+```
 
-traverse the graph.
-* type: 'bfs' OR 'dfs' (breadth-first search or depth-first search). default is 'bfs'
+**.bfsTraverse(key, cb)** 
+traverse the graph from a strating vertex using breadth-first search and call cb for each vertex object.
+```js
+graph.traverseDfs('v5', v => console.log(v.getKey(), v.getValue()));
+// v5 true
+// v4 true
+// v3 true
+// v2 true
+// v1 true
+```
 
-``` javascript
-// bfs traverse
-graph.traverse('v5', (v) => console.log(v), 'bfs');
-// v5
-// v4
-// v3
-// v2
-// v1
+**.traverse(key, cb, type)** 
+traversing the graph using dfs or bfs approach.
+```js
+graph.traverse('v1', )
+```
 
-// dfs traverse
-graph.traverse('v1', (v) => console.log(v), 'dfs');
-// v1
-// v2
-// v3
-// v4
-// v5
 ```
 
 **.findShortestPath(v1, v2)**
@@ -134,133 +148,18 @@ find all possible shortests paths between two vertices in the graph
 ``` javascript
 let shortestPath = graph.findShortestPath('v1', 'v5'); // [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
 ```
-
 **.clear()** 
 
 clears all the nodes from the graph.
 ```javascript
 graph.clear();
+directedGraph.clear();
 ```
 
-## DirectedGraph
-<img width="424" alt="dgraph" src="https://user-images.githubusercontent.com/6517308/35762789-3f49bc06-0863-11e8-85ee-105b352b1aad.png">
-
-**construction**
-``` javascript
-let dgraph = ds.directedGraph();
-
-// OR
-
-let dgraph = ds.dg();
+## Build
+```
+grunt build
 ```
 
-**.addVertex(vertex)** 
-
-adds a vertex to the graph.
-```javascript
-dgraph.addVertex('test');
-```
-
-**.hasVertex(vertex)**
-
-checks if the graph has a vertex
-```javascript
-let check = dgraph.hasVertex('test'); // true
-```
-
-**.removeVertex(vertex)**
-
-checks if the graph has a vertex
-```javascript
-dgraph.removeVertex('test');
-dgraph.hasVertex('test'); // false
-```
-
-**.addEdge(v1, v2, weight)**
-
-adds a weighted direction from v1 to v2
-```javascript
-dgraph.addVertex('v1');
-dgraph.addVertex('v2');
-dgraph.addEdge('v1', 'v2', 3);
-```
-
-**.hasEdge(v1, v2)**
-
-checks if the graph has a direction from v1 to v2
-```javascript
-let check1 = dgraph.hasEdge('v1', 'v2'); // true
-let check2 = dgraph.hasEdge('v2', 'v1'); // false
-```
-
-**.getWeight(v1, v2)** 
-
-returns the weight from v1 to v2
-```javascript
-let w = dgraph.getWeight('v1', 'v2'); // 3
-```
-
-**.removeEdge(v1, v2)**
-
-removes the direction from v1 to v2
-```javascript
-dgraph.removeEdge('v1', 'v2');
-dgraph.hasEdge('v1', 'v2'); // false
-```
-
-**.addPath(v1, v2, weight)**
-
-adds a direction from v1 to v2 and creates both vertices if not exist
-```javascript
-// build the diagram dgraph
-dgraph.addPath('v1', 'v2', 2);
-dgraph.addPath('v1', 'v3', 3);
-dgraph.addPath('v1', 'v4', 1);
-dgraph.addPath('v2', 'v4', 1);
-dgraph.addPath('v3', 'v5', 2);
-dgraph.addPath('v4', 'v3', 1);
-dgraph.addPath('v4', 'v5', 4);
-```
-
-**.countVertices()** 
-
-returns the number of vertices in the graph.
-```javascript
-let count = dgraph.countVertices(); // 5
-```
-
-**.traverse(vertex, cb, type)** 
-
-traverse the graph.
-* type: 'bfs' OR 'dfs' (breadth-first search or depth-first search). default is 'bfs'
-``` javascript
-// bfs traverse
-dgraph.traverse('v1', (v) => console.log(v), 'bfs');
-// v1
-// v2
-// v3
-// v4
-// v5
-
-// dfs traverse
-dgraph.traverse('v5', (v) => console.log(v), 'dfs');
-// v1
-// v2
-// v4
-// v3
-// v5
-```
-
-**.findShortestPath(v1, v2)**
-
-find all possible shortests paths between two vertices in the graph
-``` javascript
-let shortestPath = dgraph.findShortestPath('v1', 'v5'); // [ ['v1', 'v4', 'v3', 'v5'] ]
-```
-
-**.clear()** 
-
-clears all the nodes from the graph.
-```javascript
-dgraph.clear();
-```
+## License
+The MIT License. Full License is [here](https://github.com/datastructures-js/doubly-linked-list/blob/master/LICENSE)
