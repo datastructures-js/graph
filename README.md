@@ -154,7 +154,7 @@ graph.traverse('v1', v => console.log(v.getKey(), v.getValue()), 'dfs');
 // v5 true
 ```
 
-**.dfsShortestPath(v1, v2)**
+**.dfsShortestPath(key1, key2)**
 
 finds the shortest path between two vertices based on a depth-first search algorithm.
 ```js
@@ -162,21 +162,21 @@ console.log(graph.findShortestPath('v1', 'v5'));
 // [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
 
 console.log(directedGraph.dfsShortestPath('v1', 'v5'));
-// [['v3', 'v4', 'v2', 'v1']]
+// [['v1', 'v4', 'v3', 'v5']]
 ```
 
 **.findShortestPath(v1, v2, algorithm)**
 
-find all possible shortests paths (same weight sum) between two vertices in the graph
-``` javascript
-console.log(graph.findShortestPath('v1', 'v5')); // [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
-
-console.log(directedGraph)
+find all possible shortests paths (same weight sum) between two vertices in the graph using an algorithm.
+Right now, only a DFS algorithm is implemented. so it does the same as `.dfsShortestPath`.
+```javascript
+console.log(graph.findShortestPath('v1', 'v5'));
+// [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
 ```
 
 **.clear()** 
 
-clears all the nodes from the graph.
+clears all the vertices and edges in the graph.
 ```javascript
 graph.clear();
 directedGraph.clear();
