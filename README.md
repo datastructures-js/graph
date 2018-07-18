@@ -20,13 +20,10 @@ const directedGraph = graphFn({ directed: true });
 
 **.addVertex(key, value)** 
 
-adds a vertex object to the graph.
-Vertex object has the following api:
+adds a vertex object to the graph. Vertex object has the following api:
 
 **getKey()** get the vertex key.
-
 **getValue()** get the vertex value.
-
 **setValue(value)** sets (updates) the vertex value.
 
 ```javascript
@@ -138,20 +135,45 @@ graph.traverseDfs('v5', v => console.log(v.getKey(), v.getValue()));
 // v1 true
 ```
 
-**.traverse(key, cb, type)** 
-traversing the graph using dfs or bfs approach.
+**.traverse(key, cb, type)**
+
+traversing the graph using dfs or bfs approach. Default is BFS.
 ```js
-graph.traverse('v1', )
+graph.traverse('v5', v => console.log(v.getKey(), v.getValue()));
+// v5 true
+// v4 true
+// v3 true
+// v2 true
+// v1 true
+
+graph.traverse('v1', v => console.log(v.getKey(), v.getValue()), 'dfs');
+// v1 true
+// v2 true
+// v3 true
+// v4 true
+// v5 true
 ```
 
+**.dfsShortestPath(v1, v2)**
+
+finds the shortest path between two vertices based on a depth-first search algorithm.
+```js
+console.log(graph.findShortestPath('v1', 'v5'));
+// [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
+
+console.log(directedGraph.dfsShortestPath('v1', 'v5'));
+// [['v3', 'v4', 'v2', 'v1']]
 ```
 
-**.findShortestPath(v1, v2)**
+**.findShortestPath(v1, v2, algorithm)**
 
-find all possible shortests paths between two vertices in the graph
+find all possible shortests paths (same weight sum) between two vertices in the graph
 ``` javascript
-let shortestPath = graph.findShortestPath('v1', 'v5'); // [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
+console.log(graph.findShortestPath('v1', 'v5')); // [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
+
+console.log(directedGraph)
 ```
+
 **.clear()** 
 
 clears all the nodes from the graph.
