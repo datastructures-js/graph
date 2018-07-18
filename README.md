@@ -90,9 +90,9 @@ checks if the graph has an edge between two exsiting vertices
 console.log(graph.hasEdge('v1', 'v2')); // true
 ```
 
-**.getWeight(v1, v2)** 
+**.getWeight(key1, key2)** 
 
-returns the weight between two vertices
+returns the edge's weight between two vertices
 ```javascript
 console.log(graph.getWeight('v1', 'v2')); // 2
 ```
