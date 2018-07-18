@@ -1,0 +1,43 @@
+{
+  "name": "@datastructures-js/graph",
+  "version": "1.0.0",
+  "description": "graph & directed graph implementation in javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/datastructures-js/graph.git"
+  },
+  "keywords": [
+    "graph",
+    "graph es6",
+    "graph js",
+    "directed graph",
+    "directed graph es6",
+    "directed graph js"
+  ],
+  "author": "Eyas Ranjous <eyas.ranjous@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/datastructures-js/graph/issues"
+  },
+  "homepage": "https://github.com/datastructures-js/graph#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "grunt-eslint": "^20.2.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-mocha-istanbul": "^5.0.2",
+    "grunt-mocha-test": "^0.13.3",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.0.0"
+  },
+  "dependencies": {
+    "@datastructures-js/queue": "^2.0.1"
+  }
+}

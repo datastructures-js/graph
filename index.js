@@ -231,7 +231,6 @@ const graph = (options) => {
       if (shortestPaths.length > 0) {
         const weight = getPathWeight(path);
         const shortestWeight = getPathWeight(shortestPaths[0]);
-
         if (weight < shortestWeight) {
           shortestPaths = [path];
         } else if (weight === shortestWeight) {
