@@ -14,12 +14,21 @@ const vertex = (k, v) => {
   const key = k;
   let value = v;
 
+  /**
+   * @returns {(string|number)}
+   */
   const getKey = () => key;
 
+  /**
+   * @param {object} val
+   */
   const setValue = (val) => {
     value = val;
   };
 
+  /**
+   * @returns {object}
+   */
   const getValue = () => value;
 
   // vertex api
@@ -111,7 +120,6 @@ const graph = (options) => {
   };
 
   /**
-   * @public
    * gets the weight of the edge between two vertices
    * @returns {number|null}
    */
