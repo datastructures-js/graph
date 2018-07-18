@@ -246,8 +246,8 @@ const graph = (options) => {
           Object.keys(edges[k1]).forEach((k) => {
             if (hasEdge(k1, k)) {
               dfsShortestPathFn(k, k2, currentDepth, currentPath);
+              // backward tracking - reset already visited vertices
               for (let i = currentDepth; i < currentPath.length; i += 1) {
-                // backward tracking - reset already visited vertices
                 visited[currentPath[i]] = false;
               }
               currentPath = currentPath.slice(0, currentDepth);
