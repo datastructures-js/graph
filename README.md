@@ -168,6 +168,7 @@ console.log(directedGraph.dfsShortestPath('v1', 'v5'));
 **.findShortestPath(v1, v2, algorithm)**
 
 find all possible shortests paths (same weight sum) between two vertices in the graph using an algorithm.
+
 Right now, only a DFS algorithm is implemented. so it does the same as `.dfsShortestPath`.
 ```javascript
 console.log(graph.findShortestPath('v1', 'v5'));
