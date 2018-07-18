@@ -1,27 +1,40 @@
-
-## Graph &  Directed Graph
+## Graph & Directed Graph
 <img width="413" alt="graph" src="https://user-images.githubusercontent.com/6517308/35762771-d25ff10a-0862-11e8-9302-812a36eddb9e.png">
 
 <img width="424" alt="dgraph" src="https://user-images.githubusercontent.com/6517308/35762789-3f49bc06-0863-11e8-85ee-105b352b1aad.png">
 
-Graph's ertex is represented as a key-value object where key data type is: **number** or **string**
+Graph's vertex is represented as a key-value object where key data type is: **number** or **string**
 
-vertex data type: string, number, boolean, null, undefined
+## Usage
+```js
+const graphFn = require('@datastructures-js/graph');
 
-**construction**
-```javascript
-let graph = ds.graph();
+// graph
+const graph = graphFn();
 
-// OR
-
-let graph = ds.g();
+// directed graph
+const directedGraph = graphFn({ directed: true });
 ```
 
-**.addVertex(vertex)** 
+## API
 
-adds a vertex to the graph.
+**.addVertex(key, value)** 
+
+adds a vertex object to the graph.
 ```javascript
-graph.addVertex('test');
+// building the graph in the diagram
+graph.addVertex('v1', true);
+graph.addVertex('v2', true);
+graph.addVertex('v3', true);
+graph.addVertex('v4', true);
+graph.addVertex('v5', true);
+
+// building the directed graph in the diagram
+directedGraph.addVertex('v1', true);
+directedGraph.addVertex('v2', true);
+directedGraph.addVertex('v3', true);
+directedGraph.addVertex('v4', true);
+directedGraph.addVertex('v5', true);
 ```
 
 **.hasVertex(vertex)**
