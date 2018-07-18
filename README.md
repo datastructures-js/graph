@@ -115,6 +115,7 @@ console.log(directedGraph.countVertices()); // 5
 ```
 
 **.dfsTraverse(key, cb)** 
+
 traverse the graph from a strating vertex using depth-first search and call cb for each vertex object.
 ```js
 graph.traverseDfs('v1', v => console.log(v.getKey(), v.getValue()));
@@ -126,6 +127,7 @@ graph.traverseDfs('v1', v => console.log(v.getKey(), v.getValue()));
 ```
 
 **.bfsTraverse(key, cb)** 
+
 traverse the graph from a strating vertex using breadth-first search and call cb for each vertex object.
 ```js
 graph.traverseDfs('v5', v => console.log(v.getKey(), v.getValue()));
