@@ -27,9 +27,11 @@ const directedGraph = graphFn({ directed: true });
 
 adds a vertex object to the graph. Vertex object has the following api:
 
-**getKey()** get the vertex key.
-**getValue()** get the vertex value.
-**setValue(value)** sets (updates) the vertex value.
+**.getKey()** get the vertex key.
+
+**.getValue()** get the vertex value.
+
+**.setValue(value)** sets (updates) the vertex value.
 
 ```javascript
 // adding vertices of the graph in the diagram
