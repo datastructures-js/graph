@@ -7,4 +7,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [v2.0.0] - 2018-10-29
 ### Changed
 - only use `.traverse(key, cb, type)` to traverse the graph. removed `dfsTravers` & `bfsTraverse`.
-- only use `.findShortestPath = (key1, key2, type)` to fins the shortest path. removed `dfsShortestPath`.
+- only use `.findShortestPath(key1, key2, type)` to fins the shortest path. removed `dfsShortestPath`.
