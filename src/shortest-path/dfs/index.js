@@ -1,5 +1,5 @@
 /**
- * find all shortest paths between two vertices based on depth-first appraoch
+ * find all shortest paths between two vertices based on depth-first search
  * @returns {array} - all existing shortest paths
  */
 module.exports = graph => (key1, key2) => {
