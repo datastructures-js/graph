@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const graphFn = require('./index');
+const graphFn = require('./graph');
 
 describe('graph test', () => {
   const graph = graphFn();

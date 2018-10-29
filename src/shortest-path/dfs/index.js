@@ -28,7 +28,7 @@ module.exports = graph => (key1, key2) => {
     }
   };
 
-  const dfsShortestPathFn = (k1, k2, depth, path) => {
+  const dfs = (k1, k2, depth, path) => {
     if (graph.hasVertex(k1) && !visited[k1]) {
       visited[k1] = true;
       const currentDepth = depth + 1;
@@ -36,10 +36,11 @@ module.exports = graph => (key1, key2) => {
       currentPath.push(k1);
       if (k1 === k2) {
         addShortestPath(currentPath);
-      } else if (edges[k1]) {
-        Object.keys(edges[k1]).forEach((k) => {
-          if (hasEdge(k1, k)) {
-            dfsShortestPathFn(k, k2, currentDepth, currentPath);
+      } else {
+        const connectedKeys = Object.keys(graph.getEdges(k1));
+        connectedKeys.forEach((connected) => {
+          if (graph.hasEdge(k1, connected)) {
+            dfs(connected, k2, currentDepth, currentPath);
             // backward tracking - reset already visited vertices
             for (let i = currentDepth; i < currentPath.length; i += 1) {
               visited[currentPath[i]] = false;
@@ -51,6 +52,6 @@ module.exports = graph => (key1, key2) => {
     }
   };
 
-  dfsShortestPathFn(key1, key2, 0, []);
+  dfs(key1, key2, 0, []);
   return shortestPaths;
 };

@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const graphFn = require('../../index');
+const graphFn = require('../../graph');
 const dfsFn = require('./index');
 
 describe('graph dfs shortest path test', () => {
@@ -47,6 +47,8 @@ describe('directed graph test', () => {
   directedGraph.addEdge('v3', 'v5', 2);
   directedGraph.addEdge('v4', 'v3', 1);
   directedGraph.addEdge('v4', 'v5', 4);
+
+  const dfs = dfsFn(directedGraph);
 
   it('should find the shortest path between two vertices', () => {
     expect(dfs('v1', 'v5')).to.deep.equal([
