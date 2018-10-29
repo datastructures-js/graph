@@ -17,10 +17,10 @@ module.exports = graph => (key1, key2) => {
   const addShortestPath = (path) => {
     if (shortestPaths.length > 0) {
       const weight = getPathWeight(path);
-      const shortestWeight = getPathWeight(shortestPaths[0]);
-      if (weight < shortestWeight) {
+      const minWeight = getPathWeight(shortestPaths[0]);
+      if (weight < minWeight) {
         shortestPaths = [path];
-      } else if (weight === shortestWeight) {
+      } else if (weight === minWeight) {
         shortestPaths.push(path);
       }
     } else {
