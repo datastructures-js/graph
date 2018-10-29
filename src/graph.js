@@ -224,8 +224,8 @@ const graph = (options) => {
    * @returns {array}
    */
   self.findShortestPath = (key1, key2, type) => {
-    const algFn = shortestPath[type] || shortestPath.dfs;
-    return algFn(self)(key1, key2);
+    const algorithm = shortestPath[type] || shortestPath.dfs;
+    return algorithm(self)(key1, key2);
   };
 
   /**
