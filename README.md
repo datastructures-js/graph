@@ -118,30 +118,6 @@ console.log(graph.countVertices()); // 5
 console.log(directedGraph.countVertices()); // 5
 ```
 
-**.dfsTraverse(key, cb)** 
-
-traverse the graph from a strating vertex using depth-first search and call cb for each vertex object.
-```js
-graph.traverseDfs('v1', v => console.log(v.getKey(), v.getValue()));
-// v1 true
-// v2 true
-// v3 true
-// v4 true
-// v5 true
-```
-
-**.bfsTraverse(key, cb)** 
-
-traverse the graph from a strating vertex using breadth-first search and call cb for each vertex object.
-```js
-graph.traverseDfs('v5', v => console.log(v.getKey(), v.getValue()));
-// v5 true
-// v4 true
-// v3 true
-// v2 true
-// v1 true
-```
-
 **.traverse(key, cb, type)**
 
 traversing the graph using `dfs` or `bfs` approach. Default is `bfs`.
@@ -161,24 +137,14 @@ graph.traverse('v1', v => console.log(v.getKey(), v.getValue()), 'dfs');
 // v5 true
 ```
 
-**.dfsShortestPath(key1, key2)**
-
-finds the shortest path between two vertices based on a depth-first search algorithm.
-```js
-console.log(graph.findShortestPath('v1', 'v5'));
-// [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
-
-console.log(directedGraph.dfsShortestPath('v1', 'v5'));
-// [['v1', 'v4', 'v3', 'v5']]
-```
-
 **.findShortestPath(v1, v2, algorithm)**
 
-find all possible shortests paths (same weight sum) between two vertices in the graph using an algorithm.
+find all possible shortests paths (same minimum weight sum) between two vertices using an algorithm.
 
-Right now, only a DFS algorithm is implemented. so it does the same as `.dfsShortestPath`.
+Right now, only a DFS algorithm is implemented (default). DFS finds the shortest path between two vertices based on depth-first search.
+
 ```javascript
-console.log(graph.findShortestPath('v1', 'v5'));
+console.log(graph.findShortestPath('v1', 'v5', 'dfs'));
 // [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
 ```
 
