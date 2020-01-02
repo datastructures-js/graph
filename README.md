@@ -381,8 +381,13 @@ clears all vertices and edges in the graph.
 
 #### Example
 ```js
-graph.clear();
 directedGraph.clear();
+console.log(directedGraph.verticesCount()); // 0
+console.log(directedGraph.edgesCount()); // 0
+
+graph.clear();
+console.log(graph.verticesCount()); // 0
+console.log(graph.edgesCount()); // 0
 ```
 
 ## Build
