@@ -1,3 +1,9 @@
+/**
+ * datastructures-js/graph
+ * @copyright 2020 Eyas Ranjous <eyas.ranjous@gmail.com>
+ * @license MIT
+ */
+ 
 const DirectedGraph = require('./directedGraph');
 
 /**

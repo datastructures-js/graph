@@ -1,6 +1,6 @@
 /**
  * datastructures-js/graph
- * @copyright 2019 Eyas Ranjous <eyas.ranjous@gmail.com>
+ * @copyright 2020 Eyas Ranjous <eyas.ranjous@gmail.com>
  * @license MIT
  */
 
