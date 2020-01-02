@@ -18,7 +18,7 @@
   * [.addEdge(srcKey, destKey, weight)](#addedgesrckey-destkey-weight)
   * [.hasEdge(srcKey, destKey)](#hasedgesrckey-destkey)
   * [.edgesCount()](#edgescount)
-  * [.getWeight(srcKey, destKey)](#getweightsrckeydestkey)
+  * [.getWeight(srcKey, destKey)](#getweightsrcKey-destKey))
   * [.removeVertex(key)](#removevertexkey)
   * [.removeEdge(key)](#removeedgekey)
   * [.traverseDfs(srcKey)](#traversedfssrckey)
