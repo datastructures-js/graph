@@ -323,7 +323,7 @@ v4:4
 v3:3
 */
 
-graph.traverseBfs('v1', (v) => console.log(v.serialize()));
+graph.traverseDfs('v1', (v) => console.log(v.serialize()));
 /*
 { key: 'v1', value: true }
 { key: 'v2', value: true }
