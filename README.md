@@ -6,8 +6,6 @@
 
 ![graph](https://user-images.githubusercontent.com/6517308/71645678-802cd500-2ca1-11ea-96fb-11a71fd95191.jpg)
 
-Graph & Directed Graph implementation in javascript.
-
 # Table of Contents
 * [Install](#install)
 * [API](#api)
@@ -27,6 +25,7 @@ Graph & Directed Graph implementation in javascript.
   * [.traverseBfs(srcKey)](#traversebfssrckey)
   * [.clear()](#clear)
  * [Build](#build)
+ * [License](#license)
 
 ## install
 ```sh
@@ -56,7 +55,7 @@ const graph = new Graph();
 ```
 
 ### .addVertex(key, value)
-insert a vertex to the graph.
+adds a vertex to the graph.
 <table>
  <tr>
   <th>runtime</th>
@@ -74,18 +73,18 @@ insert a vertex to the graph.
 
 #### Example
 ```js
-graph.addVertex('v1', true);
-graph.addVertex('v2', true);
-graph.addVertex('v3', true);
-graph.addVertex('v4', true);
-graph.addVertex('v5', true);
-
 directedGraph.addVertex('v1', 1);
 directedGraph.addVertex('v1', 1);
 directedGraph.addVertex('v2', 2);
 directedGraph.addVertex('v3', 3);
 directedGraph.addVertex('v4', 4);
 directedGraph.addVertex('v5', 5);
+
+graph.addVertex('v1', true);
+graph.addVertex('v2', true);
+graph.addVertex('v3', true);
+graph.addVertex('v4', true);
+graph.addVertex('v5', true);
 ```
 
 ### .hasVertex(key)
@@ -96,7 +95,7 @@ checks if the graph has a vertex by its key.
   <th>params</th>
  </tr>
  <tr>
-  <td>O(log(1))</td>
+  <td>O(1)</td>
   <td>
    <b>key</b>: {number} or {string}
   </td>
@@ -105,8 +104,8 @@ checks if the graph has a vertex by its key.
 
 #### Example
 ```js
-console.log(graph.hasVertex('v1')); // true
 console.log(directedGraph.hasVertex('v7')); // false
+console.log(graph.hasVertex('v1')); // true
 ```
 
 ### .verticesCount()
@@ -118,16 +117,14 @@ gets the number of vertices in the graph.
  </tr>
  <tr>
   <td>O(1)</td>
-  <td>
-   <b>{number}
-  </td>
+  <td>{number}</td>
  </tr>
 </table>
 
 #### Example
 ```js
-console.log(graph.verticesCount()); // 5
 console.log(directedGraph.verticesCount()); // 5
+console.log(graph.verticesCount()); // 5
 ```
 
 ### .addEdge(srcKey, destKey, weight)
@@ -151,14 +148,6 @@ adds an edge with a weight between two existings vertices. Default weight is 1 i
 
 #### Example
 ```js
-graph.addEdge('v1', 'v2', 2);
-graph.addEdge('v2', 'v3', 3);
-graph.addEdge('v1', 'v3', 6);
-graph.addEdge('v2', 'v4', 1);
-graph.addEdge('v4', 'v3', 1);
-graph.addEdge('v4', 'v5', 4);
-graph.addEdge('v3', 'v5', 2);
-
 directedGraph.addEdge('v1', 'v2', 2);
 directedGraph.addEdge('v1', 'v3', 3);
 directedGraph.addEdge('v1', 'v4', 1);
@@ -166,6 +155,14 @@ directedGraph.addEdge('v2', 'v4', 1);
 directedGraph.addEdge('v3', 'v5', 2);
 directedGraph.addEdge('v4', 'v3', 1);
 directedGraph.addEdge('v4', 'v5', 4);
+
+graph.addEdge('v1', 'v2', 2);
+graph.addEdge('v2', 'v3', 3);
+graph.addEdge('v1', 'v3', 6);
+graph.addEdge('v2', 'v4', 1);
+graph.addEdge('v4', 'v3', 1);
+graph.addEdge('v4', 'v5', 4);
+graph.addEdge('v3', 'v5', 2);
 ```
 
 ### .hasEdge(srcKey, destKey)
@@ -211,8 +208,8 @@ gets the number of edges in the graph.
 
 #### Example
 ```js
-console.log(graph.edgesCount()); // 7
 console.log(directedGraph.edgesCount()); // 7
+console.log(graph.edgesCount()); // 7
 ```
 
 ### .getWeight(srcKey, destKey)
@@ -232,7 +229,12 @@ gets the edge's weight between two vertices in the graph. If there is no direct 
 
 #### Example
 ```js
+console.log(directedGraph.getWeight('v1', 'v2')); // 2
+console.log(directedGraph.getWeight('v2', 'v1')); // null
+console.log(directedGraph.getWeight('v1', 'v1')); // 0
+
 console.log(graph.getWeight('v1', 'v2')); // 2
+console.log(graph.getWeight('v2', 'v1')); // 2
 console.log(graph.getWeight('v1', 'v1')); // 0
 console.log(graph.getWeight('v1', 'v4')); // null
 ```
@@ -287,7 +289,7 @@ removes an edge between two existing vertices
 
 #### Example
 ```js
-directedGraph.removeEdge('v2', 'v4');
+directedGraph.removeEdge('v1', 'v3');
 console.log(directedGraph.edgesCount()); // 4
 
 graph.removeEdge('v2', 'v3');
@@ -306,26 +308,28 @@ traverses the graph using the depth-first recursive search.
   <td>
    <b>srcKey</b>: {number} or {string} the starting vertex key
    <br><br>
-   <b>cb</b>: {function(\&lt;Vertex&gt;)} the callback that is called with the traversed vertex object.
+   <b>cb</b>: {function(Vertex)} the callback that is called with the traversed vertex object.
   </td>
  </tr>
 </table>
 
 #### Eample
 ```js
-directedGraph.traverseDfs('v5', (vertex) => vertex.serialize());
-// v5 true
-// v4 true
-// v3 true
-// v2 true
-// v1 true
+directedGraph.traverseDfs('v1', (v) => console.log(`${v.getKey()}:${v.getValue()}`));
+/*
+v1:1
+v2:2
+v4:4
+v3:3
+*/
 
-graph.traverseDfs('v5', (vertex) => vertex.serialize());
-// v5 true
-// v4 true
-// v3 true
-// v2 true
-// v1 true
+graph.traverseBfs('v1', (v) => console.log(v.serialize()));
+/*
+{ key: 'v1', value: true }
+{ key: 'v2', value: true }
+{ key: 'v4', value: true }
+{ key: 'v3', value: true }
+*/
 ```
 
 ### .traverseBfs(srcKey)
@@ -340,26 +344,28 @@ traverses the graph using the breadth-first search with a queue.
   <td>
    <b>srcKey</b>: {number} or {string} the starting vertex key
    <br><br>
-   <b>cb</b>: {function(\&lt;Vertex&gt;)} the callback that is called with the traversed vertex object.
+   <b>cb</b>: {function(Vertex)} the callback that is called with the traversed vertex object.
   </td>
  </tr>
 </table>
 
 #### Eample
 ```js
-directedGraph.traverseBfs('v5', (vertex) => vertex.serialize());
-// v5 true
-// v4 true
-// v3 true
-// v2 true
-// v1 true
+directedGraph.traverseBfs('v1', (v) => console.log(`${v.getKey()}:${v.getValue()}`));
+/*
+v1:1
+v2:2
+v4:4
+v3:3
+*/
 
-graph.traverseBfs('v5', (vertex) => vertex.serialize());
-// v5 true
-// v4 true
-// v3 true
-// v2 true
-// v1 true
+graph.traverseBfs('v1', (v) => console.log(v.serialize()));
+/*
+{ key: 'v1', value: true }
+{ key: 'v2', value: true }
+{ key: 'v3', value: true }
+{ key: 'v4', value: true }
+*/
 ```
 
 ### .clear()
