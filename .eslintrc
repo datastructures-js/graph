@@ -1,9 +1,19 @@
 {
   "rules": {
-    max-len: ["error", { "code": 80, "ignoreComments": true }],
-    "comma-dangle": ["error", {
-      "functions": "ignore"
-    }]
+    max-len: [
+      "error",
+      {
+        "code": 80,
+        "ignoreComments": true
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      {
+        "functions": "ignore"
+      }
+    ],
+    "class-methods-use-this":0
   },
   "env": {
     "mocha": true,
