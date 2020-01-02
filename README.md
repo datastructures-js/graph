@@ -1,74 +1,156 @@
-## Graph & Directed Graph
+# @datastructures-js/graph
 
 [![build:?](https://travis-ci.org/datastructures-js/graph.svg?branch=master)](https://travis-ci.org/datastructures-js/graph) 
 [![npm](https://img.shields.io/npm/v/@datastructures-js/graph.svg)](https://www.npmjs.com/package/@datastructures-js/graph)
 [![npm](https://img.shields.io/npm/dm/@datastructures-js/graph.svg)](https://www.npmjs.com/package/@datastructures-js/graph) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/@datastructures-js/graph)
 
-<img width="413" alt="graph" src="https://user-images.githubusercontent.com/6517308/35762771-d25ff10a-0862-11e8-9302-812a36eddb9e.png">
+![graph](https://user-images.githubusercontent.com/6517308/71645678-802cd500-2ca1-11ea-96fb-11a71fd95191.jpg)
 
-<img width="424" alt="dgraph" src="https://user-images.githubusercontent.com/6517308/35762789-3f49bc06-0863-11e8-85ee-105b352b1aad.png">
+Graph & Directed Graph implementation in javascript.
 
-Graph's vertex is represented as a key-value object where key data type is: **number** or **string**
+# Table of Contents
+* [Install](#install)
+* [API](#api)
+  * [require](#require)
+  * [import](#import)
+  * [Creating a Graph](#create-a-graph)
+  * [.addVertex(key, value)](#addvertexkey-value)
+  * [.hasVertex(key)](#hasvvertex-key)
+  * [.verticesCount()](#verticescount)
+  * [.addEdge(srcKey, destKey, weight)](#addedgesrckey-destkey-weight)
+  * [.hasEdge(srcKey, destKey)](#hasedgesrckey-destkey)
+  * [.edgesCount()](#edgescount)
+  * [.getWeight(srcKey, destKey)](#getweightsrckeydestkey)
+  * [.removeVertex(key)](#removevertexkey)
+  * [.removeEdge(key)](#removeedgekey)
+  * [.traverseDfs(srcKey)](#traversedfssrckey)
+  * [.traverseBfs(srcKey)](#traversebfssrckey)
+  * [.clear()](#clear)
+ * [Build](#build)
 
-## Usage
-```js
-const graphFn = require('@datastructures-js/graph');
-
-// graph
-const graph = graphFn();
-
-// directed graph
-const directedGraph = graphFn({ directed: true });
+## install
+```sh
+npm install --save @datastructures-js/graph
 ```
 
 ## API
 
-**.addVertex(key, value)** 
+### require
+```js
+const { Graph, DirectedGraph } = require('@datastructures-js/graph');
+```
 
-adds a vertex object to the graph. Vertex object has the following api:
+### import
+```js
+import { Graph, DirectedGraph } from '@datastructures-js/graph';
+```
 
-**.getKey()** get the vertex key.
+### create a graph
+creates an empty graph
 
-**.getValue()** get the vertex value.
+#### Example
+```js
+const directedGraph = new DirectedGraph();
 
-**.setValue(value)** sets (updates) the vertex value.
+const graph = new Graph();
+```
 
-```javascript
-// adding vertices of the graph in the diagram
+### .addVertex(key, value)
+insert a vertex to the graph.
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   <b>key</b>: {number} or {string}
+   <br><br>
+   <b>value</b>: {object}
+  </td>
+ </tr>
+</table>
+
+#### Example
+```js
 graph.addVertex('v1', true);
 graph.addVertex('v2', true);
 graph.addVertex('v3', true);
 graph.addVertex('v4', true);
 graph.addVertex('v5', true);
 
-// adding vertices of the directed graph in the diagram
-directedGraph.addVertex('v1', true);
-directedGraph.addVertex('v2', true);
-directedGraph.addVertex('v3', true);
-directedGraph.addVertex('v4', true);
-directedGraph.addVertex('v5', true);
+directedGraph.addVertex('v1', 1);
+directedGraph.addVertex('v1', 1);
+directedGraph.addVertex('v2', 2);
+directedGraph.addVertex('v3', 3);
+directedGraph.addVertex('v4', 4);
+directedGraph.addVertex('v5', 5);
 ```
 
-**.hasVertex(key)**
+### .hasVertex(key)
+checks if the graph has a vertex by its key.
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>O(log(1))</td>
+  <td>
+   <b>key</b>: {number} or {string}
+  </td>
+ </tr>
+</table>
 
-checks if the graph has a vertex
-```javascript
+#### Example
+```js
 console.log(graph.hasVertex('v1')); // true
+console.log(directedGraph.hasVertex('v7')); // false
 ```
 
-**.removeVertex(key)**
+### .verticesCount()
+gets the number of vertices in the graph.
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   <b>{number}
+  </td>
+ </tr>
+</table>
 
-removes a vertex from the graph
-```javascript
-graph.removeVertex('test');
-graph.hasVertex('test'); // false
+#### Example
+```js
+console.log(graph.verticesCount()); // 5
+console.log(directedGraph.verticesCount()); // 5
 ```
 
-**.addEdge(key1, key2, weight)**
+### .addEdge(srcKey, destKey, weight)
+adds an edge with a weight between two existings vertices. Default weight is 1 if not defined. The edge is directed when added in a directed graph, and two-ways when added in a graph.
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   <b>srcKey</b>: {number} or {string} the source vertex key
+   <br><br>
+   <b>destKey</b>: {number} or {string} the destination vertex key
+   <br><br>
+   <b>weight</b>: {number} the weight of the edge
+  </td>
+ </tr>
+</table>
 
-adds a weighted edge between two existing vertices.
-```javascript
-// adding edges of the graph in diagram
+#### Example
+```js
 graph.addEdge('v1', 'v2', 2);
 graph.addEdge('v2', 'v3', 3);
 graph.addEdge('v1', 'v3', 6);
@@ -77,7 +159,6 @@ graph.addEdge('v4', 'v3', 1);
 graph.addEdge('v4', 'v5', 4);
 graph.addEdge('v3', 'v5', 2);
 
-// adding edges of the directed graph in diagram
 directedGraph.addEdge('v1', 'v2', 2);
 directedGraph.addEdge('v1', 'v3', 3);
 directedGraph.addEdge('v1', 'v4', 1);
@@ -87,71 +168,213 @@ directedGraph.addEdge('v4', 'v3', 1);
 directedGraph.addEdge('v4', 'v5', 4);
 ```
 
-**.hasEdge(key1, key2)**
+### .hasEdge(srcKey, destKey)
+checks if the graph has an edge between two existing vertices. In directed graph, it returns true only if there is a direction from source to destination.
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   <b>srcKey</b>: {number} or {string} the source vertex key
+   <br><br>
+   <b>destKey</b>: {number} or {string} the destination vertex key
+  </td>
+ </tr>
+</table>
 
-checks if the graph has an edge between two exsiting vertices
-```javascript
-console.log(graph.hasEdge('v1', 'v2')); // true
-```
-
-**.getWeight(key1, key2)** 
-
-returns the edge's weight between two vertices
-```javascript
-console.log(graph.getWeight('v1', 'v2')); // 2
-```
-
-**.removeEdge(key1, key2)**
-
-removes an existing edge in the graph
-```javascript
-graph.removeEdge('v1', 'v2');
-graph.hasEdge('v1', 'v2'); // false
-graph.hasEdge('v2', 'v1'); // false
-```
-
-**.countVertices()** 
-
-gets the number of vertices in the graph.
-```javascript
-console.log(graph.countVertices()); // 5
-console.log(directedGraph.countVertices()); // 5
-```
-
-**.traverse(key, cb, type)**
-
-traversing the graph using `dfs` or `bfs` approach. Default is `bfs`.
+#### Example
 ```js
-graph.traverse('v5', v => console.log(v.getKey(), v.getValue())); // bfs default
+console.log(directedGraph.hasEdge('v1', 'v2')); // true
+console.log(directedGraph.hasEdge('v2', 'v1')); // false
+
+console.log(graph.hasEdge('v1', 'v2')); // true
+console.log(graph.hasEdge('v2', 'v1')); // true
+```
+
+### .edgesCount()
+gets the number of edges in the graph.
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   {number}
+  </td>
+ </tr>
+</table>
+
+#### Example
+```js
+console.log(graph.edgesCount()); // 7
+console.log(directedGraph.edgesCount()); // 7
+```
+
+### .getWeight(srcKey, destKey)
+gets the edge's weight between two vertices in the graph. If there is no direct edge between the two vertices, it returns null. It also returns 0 if the source key is equal to destination key.
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>return</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   {number} or {null}
+  </td>
+ </tr>
+</table>
+
+#### Example
+```js
+console.log(graph.getWeight('v1', 'v2')); // 2
+console.log(graph.getWeight('v1', 'v1')); // 0
+console.log(graph.getWeight('v1', 'v4')); // null
+```
+
+### .removeVertex(key)
+removes a vertex and all its edges from the graph
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>
+    <b>Directed Graph:</b> O(E) : E = number of edges in the graph
+  </td>
+  <td rowspan="2">
+   <b>key</b>: {number} or {string} the vertex key
+  </td>
+ </tr>
+  <tr>
+  <td>
+    <b>Graph:</b> O(K) : K &#x2208; E = number of connected edges to key
+  </td>
+ </tr>
+</table>
+
+#### Example
+```js
+directedGraph.removeVertex('v5');
+console.log(directedGraph.verticesCount()); // 4
+console.log(directedGraph.edgesCount()); // 5
+
+graph.removeVertex('v5');
+console.log(graph.verticesCount()); // 4
+console.log(graph.edgesCount()); // 5
+```
+
+### .removeEdge(srcKey, destKey)
+removes an edge between two existing vertices
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+  <td>
+   <b>key</b>: {number} or {string} the vertex key
+  </td>
+ </tr>
+</table>
+
+#### Example
+```js
+directedGraph.removeEdge('v2', 'v4');
+console.log(directedGraph.edgesCount()); // 4
+
+graph.removeEdge('v2', 'v3');
+console.log(graph.edgesCount()); // 4
+```
+
+### .traverseDfs(srcKey, cb)
+traverses the graph using the depth-first recursive search.
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>O(V) : V = number of vertices in the graph</td>
+  <td>
+   <b>srcKey</b>: {number} or {string} the starting vertex key
+   <br><br>
+   <b>cb</b>: {function(\&lt;Vertex&gt;)} the callback that is called with the traversed vertex object.
+  </td>
+ </tr>
+</table>
+
+#### Eample
+```js
+directedGraph.traverseDfs('v5', (vertex) => vertex.serialize());
 // v5 true
 // v4 true
 // v3 true
 // v2 true
 // v1 true
 
-graph.traverse('v1', v => console.log(v.getKey(), v.getValue()), 'dfs');
-// v1 true
-// v2 true
-// v3 true
-// v4 true
+graph.traverseDfs('v5', (vertex) => vertex.serialize());
 // v5 true
+// v4 true
+// v3 true
+// v2 true
+// v1 true
 ```
 
-**.findShortestPath(v1, v2, algorithm)**
+### .traverseBfs(srcKey)
+traverses the graph using the breadth-first search with a queue.
+<table>
+ <tr>
+  <th>runtime</th>
+  <th>params</th>
+ </tr>
+ <tr>
+  <td>O(V) : V = number of vertices in the graph</td>
+  <td>
+   <b>srcKey</b>: {number} or {string} the starting vertex key
+   <br><br>
+   <b>cb</b>: {function(\&lt;Vertex&gt;)} the callback that is called with the traversed vertex object.
+  </td>
+ </tr>
+</table>
 
-find all possible shortests paths (same minimum weight sum) between two vertices using an algorithm.
+#### Eample
+```js
+directedGraph.traverseBfs('v5', (vertex) => vertex.serialize());
+// v5 true
+// v4 true
+// v3 true
+// v2 true
+// v1 true
 
-Right now, only a DFS algorithm is implemented (default). DFS finds the shortest path between two vertices based on depth-first search.
-
-```javascript
-console.log(graph.findShortestPath('v1', 'v5', 'dfs'));
-// [ ['v1', 'v2', 'v4', 'v3', 'v5'] ]
+graph.traverseBfs('v5', (vertex) => vertex.serialize());
+// v5 true
+// v4 true
+// v3 true
+// v2 true
+// v1 true
 ```
 
-**.clear()** 
+### .clear()
+clears all vertices and edges in the graph.
+<table>
+ <tr>
+  <th>runtime</th>
+ </tr>
+ <tr>
+  <td>O(1)</td>
+ </tr>
+</table>
 
-clears all the vertices and edges in the graph.
-```javascript
+#### Example
+```js
 graph.clear();
 directedGraph.clear();
 ```
