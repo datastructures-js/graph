@@ -21,8 +21,8 @@
   * [.getWeight(srcKey, destKey)](#getweightsrcKey-destKey))
   * [.removeVertex(key)](#removevertexkey)
   * [.removeEdge(key)](#removeedgekey)
-  * [.traverseDfs(srcKey)](#traversedfssrckey)
-  * [.traverseBfs(srcKey)](#traversebfssrckey)
+  * [.traverseDfs(srcKey)](#traversedfssrckey-cb)
+  * [.traverseBfs(srcKey)](#traversebfssrckey-cb)
   * [.clear()](#clear)
  * [Build](#build)
  * [License](#license)
@@ -332,7 +332,7 @@ graph.traverseDfs('v1', (v) => console.log(v.serialize()));
 */
 ```
 
-### .traverseBfs(srcKey)
+### .traverseBfs(srcKey, cb)
 traverses the graph using the breadth-first search with a queue.
 <table>
  <tr>
