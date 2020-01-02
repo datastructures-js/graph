@@ -18,7 +18,7 @@
   * [.addEdge(srcKey, destKey, weight)](#addedgesrckey-destkey-weight)
   * [.hasEdge(srcKey, destKey)](#hasedgesrckey-destkey)
   * [.edgesCount()](#edgescount)
-  * [.getWeight(srcKey, destKey)](#getweightsrcKey-destKey))
+  * [.getWeight(srcKey, destKey)](#getweightsrcKey-destKey)
   * [.removeVertex(key)](#removevertexkey)
   * [.removeEdge(key)](#removeedgesrckey-destkey)
   * [.traverseDfs(srcKey)](#traversedfssrckey-cb)
@@ -313,7 +313,7 @@ traverses the graph using the depth-first recursive search.
  </tr>
 </table>
 
-#### Eample
+#### Example
 ```js
 directedGraph.traverseDfs('v1', (v) => console.log(`${v.getKey()}:${v.getValue()}`));
 /*
@@ -349,7 +349,7 @@ traverses the graph using the breadth-first search with a queue.
  </tr>
 </table>
 
-#### Eample
+#### Example
 ```js
 directedGraph.traverseBfs('v1', (v) => console.log(`${v.getKey()}:${v.getValue()}`));
 /*
