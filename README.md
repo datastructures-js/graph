@@ -4,17 +4,9 @@
 [![npm](https://img.shields.io/npm/v/@datastructures-js/graph.svg)](https://www.npmjs.com/package/@datastructures-js/graph)
 [![npm](https://img.shields.io/npm/dm/@datastructures-js/graph.svg)](https://www.npmjs.com/package/@datastructures-js/graph) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/@datastructures-js/graph)
 
-<table>
-<tr><th>Graph</th><th>Directed Graph</th></tr>
-<tr>
-  <td>
-    <img width="367" alt="graph" src="https://user-images.githubusercontent.com/6517308/78640271-14946e00-7875-11ea-87a6-f85dbf1d3553.png">
-  </td>
-  <td>
-    <img width="354" alt="directed" src="https://user-images.githubusercontent.com/6517308/78640304-237b2080-7875-11ea-8b02-ff2c901edf77.png">
-  </td>
-</tr>
-</table>
+<table><tr><td>
+  <img alt="graph" src="https://user-images.githubusercontent.com/6517308/71645678-802cd500-2ca1-11ea-96fb-11a71fd95191.jpg">
+</td></tr></table>
 
 # Table of Contents
 * [Install](#install)
