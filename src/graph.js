@@ -21,12 +21,12 @@ class Graph extends DirectedGraph {
   removeEdges(key) {
     if (!this.hasVertex(key)) return;
 
-    this.edges.get(key).forEach((weight, destKey) => {
+    this._edges.get(key).forEach((weight, destKey) => {
       this.removeEdge(destKey, key);
     });
 
-    this.edgeCount -= this.edges.get(key).size;
-    this.edges.set(key, new Map());
+    this._edgesCount -= this._edges.get(key).size;
+    this._edges.set(key, new Map());
   }
 
   /**
