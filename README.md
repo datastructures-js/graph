@@ -4,6 +4,18 @@
 [![npm](https://img.shields.io/npm/v/@datastructures-js/graph.svg)](https://www.npmjs.com/package/@datastructures-js/graph)
 [![npm](https://img.shields.io/npm/dm/@datastructures-js/graph.svg)](https://www.npmjs.com/package/@datastructures-js/graph) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/@datastructures-js/graph)
 
+<table>
+<tr><th>Graph</th><th>Directed Graph</th></tr>
+<tr>
+  <td>
+    <img width="362" alt="graph" src="https://user-images.githubusercontent.com/6517308/78640107-c97a5b00-7874-11ea-804a-34a312a25175.png">
+  </td>
+  <td>
+<img width="354" alt="directed" src="https://user-images.githubusercontent.com/6517308/78640115-ced7a580-7874-11ea-96f5-7a591e0f0842.png">
+  </td>
+</tr>
+</table>
+
 ![graph](https://user-images.githubusercontent.com/6517308/71645678-802cd500-2ca1-11ea-96fb-11a71fd95191.jpg)
 
 # Table of Contents
