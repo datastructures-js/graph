@@ -8,15 +8,13 @@
 <tr><th>Graph</th><th>Directed Graph</th></tr>
 <tr>
   <td>
-    <img width="362" alt="graph" src="https://user-images.githubusercontent.com/6517308/78640107-c97a5b00-7874-11ea-804a-34a312a25175.png">
+    <img width="367" alt="graph" src="https://user-images.githubusercontent.com/6517308/78640271-14946e00-7875-11ea-87a6-f85dbf1d3553.png">
   </td>
   <td>
-<img width="354" alt="directed" src="https://user-images.githubusercontent.com/6517308/78640115-ced7a580-7874-11ea-96f5-7a591e0f0842.png">
+    <img width="354" alt="directed" src="https://user-images.githubusercontent.com/6517308/78640304-237b2080-7875-11ea-8b02-ff2c901edf77.png">
   </td>
 </tr>
 </table>
-
-![graph](https://user-images.githubusercontent.com/6517308/71645678-802cd500-2ca1-11ea-96fb-11a71fd95191.jpg)
 
 # Table of Contents
 * [Install](#install)
