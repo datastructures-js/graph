@@ -1,6 +1,6 @@
 {
   "name": "@datastructures-js/graph",
-  "version": "3.0.2",
+  "version": "4.0.0",
   "description": "graph & directed graph implementation in javascript",
   "main": "index.js",
   "scripts": {
@@ -40,6 +40,6 @@
     "sinon": "^8.0.1"
   },
   "dependencies": {
-    "@datastructures-js/queue": "^3.1.0"
+    "@datastructures-js/queue": "^3.1.3"
   }
 }
