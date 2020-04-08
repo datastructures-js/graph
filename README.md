@@ -426,18 +426,19 @@ g.removeEdges('v1'); // 2
 traverses the graph using the depth-first recursive search.
 
 <table>
+  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td>srcKey</td><td>number or string</td><td>the starting vertex key</td></tr>
+  <tr><td>cb</td><td>function</td><td>the callback that is called with each vertex</td></tr>
+</table>
+
+<table>
  <tr>
   <th>runtime</th>
-  <th>params</th>
  </tr>
  <tr>
-  <td>O(V) : V = number of vertices in the graph</td>
-  <td>
-   <b>srcKey</b>: {number} or {string} the starting vertex key
-   <br><br>
-   <b>cb</b>: {function(Vertex)} the callback that is called with the traversed vertex object.
-  </td>
- </tr>
+  <tr><td>O(V) : V = the number of vertices in the graph</td></tr>
+</tr>
 </table>
 
 #### Example
@@ -461,22 +462,25 @@ graph.traverseDfs('v1', (v) => console.log(v.serialize()));
 
 ### .traverseBfs(srcKey, cb)
 traverses the graph using the breadth-first search with a queue.
+
+<table>
+  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td>srcKey</td><td>number or string</td><td>the starting vertex key</td></tr>
+  <tr><td>cb</td><td>function</td><td>the callback that is called with each vertex</td></tr>
+</table>
+
 <table>
  <tr>
   <th>runtime</th>
-  <th>params</th>
  </tr>
  <tr>
-  <td>O(V) : V = number of vertices in the graph</td>
-  <td>
-   <b>srcKey</b>: {number} or {string} the starting vertex key
-   <br><br>
-   <b>cb</b>: {function(Vertex)} the callback that is called with the traversed vertex object.
-  </td>
- </tr>
+  <tr><td>O(V) : V = the number of vertices in the graph</td></tr>
+</tr>
 </table>
 
 #### Example
+
 ```js
 directedGraph.traverseBfs('v1', (v) => console.log(`${v.getKey()}:${v.getValue()}`));
 /*
@@ -497,6 +501,7 @@ graph.traverseBfs('v1', (v) => console.log(v.serialize()));
 
 ### .clear()
 clears all vertices and edges in the graph.
+
 <table>
  <tr>
   <th>runtime</th>
@@ -507,6 +512,7 @@ clears all vertices and edges in the graph.
 </table>
 
 #### Example
+
 ```js
 directedGraph.clear();
 console.log(directedGraph.verticesCount()); // 0
