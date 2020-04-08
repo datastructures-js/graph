@@ -68,7 +68,7 @@ class DirectedGraph {
 
   /**
    * @public
-   * add a unidirectional edge from source to destination
+   * add a direction from source to destination
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @param {number} weight
@@ -89,7 +89,7 @@ class DirectedGraph {
 
   /**
    * @public
-   * checks if there is a direction from a source to destination
+   * checks if there is a direction from source to destination
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @returns {boolean}
@@ -115,7 +115,7 @@ class DirectedGraph {
 
   /**
    * @public
-   * removes the unidirectional edge from source to destination
+   * removes the direction from source to destination
    * @param {number|string} srcKey
    * @param {number|string} destKey
    */
@@ -129,7 +129,7 @@ class DirectedGraph {
 
   /**
    * @public
-   * removes all outgoing edges of a vertex
+   * removes all directions from and to a vertex
    * @param {number|string} key
    * @return {number} number of removed edges
    */
@@ -152,7 +152,7 @@ class DirectedGraph {
 
   /**
    * @public
-   * the number of edges in the graph
+   * the number of directions in the graph
    * @returns {number}
    */
   edgesCount() {

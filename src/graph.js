@@ -36,7 +36,7 @@ class Graph extends DirectedGraph {
   /**
    * @public
    * @override
-   * add a bidirectional edge between source to a destination
+   * add a connecting edge between two vertices
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @param {number} weight
@@ -49,7 +49,7 @@ class Graph extends DirectedGraph {
   /**
    * @public
    * @override
-   * removes the bidirectional edge between two vertices
+   * removes the connecting edge between two vertices
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @returns {boolean}
@@ -62,7 +62,7 @@ class Graph extends DirectedGraph {
   /**
    * @public
    * @override
-   * the number of edges in the graph
+   * the number of connecting edges in the graph
    * @returns {number}
    */
   edgesCount() {
