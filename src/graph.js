@@ -9,7 +9,7 @@ const DirectedGraph = require('./directedGraph');
 /**
  * @class Graph
  * @extends DirectedGraph
- * A graph with bidirectional path between vertices
+ * A graph with a connecting edge between vertices
  */
 class Graph extends DirectedGraph {
   /**
