@@ -323,7 +323,7 @@ removes a vertex with all its edges from the graph by its key.
   <th colspan="2">runtime</th>
  </tr>
  <tr>
-  <tr><td>Graph</td><td>O(K) : K &#x2208; E : E = number of connected edges to key</td></tr>
+  <tr><td>Graph</td><td>O(K) : K = number of connected edges to the vertex</td></tr>
   <tr><td>Directed Graph</td><td>O(E) : E = number of edges in the graph</td></tr>
  </tr>
 </table>
@@ -342,30 +342,89 @@ console.log(graph.edgesCount()); // 5
 
 ### .removeEdge(srcKey, destKey)
 removes an edge between two existing vertices
+
+<table>
+  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
+  <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
+</table>
+
+<table>
+ <tr><th>return</th></tr>
+ <tr>
+  <td>boolean</td>
+ </tr>
+</table>
+
 <table>
  <tr>
   <th>runtime</th>
-  <th>params</th>
  </tr>
  <tr>
   <td>O(1)</td>
-  <td>
-   <b>key</b>: {number} or {string} the vertex key
-  </td>
  </tr>
 </table>
 
 #### Example
 ```js
-directedGraph.removeEdge('v1', 'v3');
+directedGraph.removeEdge('v1', 'v3'); // true
 console.log(directedGraph.edgesCount()); // 4
 
-graph.removeEdge('v2', 'v3');
+graph.removeEdge('v2', 'v3'); // true
 console.log(graph.edgesCount()); // 4
+```
+
+### .removeEdges(key)
+removes all connected edges to a vertex by its key.
+
+<table>
+  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td>key</td><td>number or string</td><td>the vertex key</td></tr>
+</table>
+
+<table>
+ <tr><th>return</th><th></th></tr>
+ <tr>
+  <td>number</td><td>number of removed edges</td>
+ </tr>
+</table>
+
+<table>
+ <tr>
+  <th colspan="2">runtime</th>
+ </tr>
+ <tr>
+  <tr><td>Graph</td><td>O(K) : K = number of connected edges to the vertex</td></tr>
+  <tr><td>Directed Graph</td><td>O(E) : E = number of edges in the graph</td></tr>
+ </tr>
+</table>
+
+#### Example
+
+```js
+const dg = new DirectedGraph();
+dg.addVertex('v1');
+dg.addVertex('v2');
+dg.addVertex('v3');
+dg.addEdge('v1', 'v2');
+dg.addEdge('v2', 'v1'); // this is counted as a direction in directed graph.
+dg.addEdge('v1', 'v3');
+dg.removeEdges('v1'); // 3
+
+const g = new Graph();
+g.addVertex('v1');
+g.addVertex('v2');
+g.addVertex('v3');
+g.addEdge('v1', 'v2');
+g.addEdge('v1', 'v3');
+g.removeEdges('v1'); // 2
 ```
 
 ### .traverseDfs(srcKey, cb)
 traverses the graph using the depth-first recursive search.
+
 <table>
  <tr>
   <th>runtime</th>
