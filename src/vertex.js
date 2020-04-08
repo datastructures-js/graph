@@ -23,17 +23,6 @@ class Vertex {
   getValue() {
     return this.value;
   }
-
-  /**
-   * @public
-   * @returns {object}
-   */
-  serialize() {
-    return {
-      key: this.key,
-      value: this.value
-    };
-  }
 }
 
 module.exports = Vertex;

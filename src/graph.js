@@ -17,16 +17,20 @@ class Graph extends DirectedGraph {
    * @override
    * removes all edges of a vertex
    * @param {number|string} key
+   * @return {number} number of removed edges
    */
   removeEdges(key) {
-    if (!this.hasVertex(key)) return;
+    if (!this.hasVertex(key)) return 0;
 
+    let removed = 0;
     this._edges.get(key).forEach((weight, destKey) => {
       this.removeEdge(destKey, key);
+      removed += 1;
     });
 
     this._edgesCount -= this._edges.get(key).size;
     this._edges.set(key, new Map());
+    return removed;
   }
 
   /**
@@ -48,10 +52,11 @@ class Graph extends DirectedGraph {
    * removes the bidirectional edge between two vertices
    * @param {number|string} srcKey
    * @param {number|string} destKey
+   * @returns {boolean}
    */
   removeEdge(sourceKey, destKey) {
     super.removeEdge(sourceKey, destKey);
-    super.removeEdge(destKey, sourceKey);
+    return super.removeEdge(destKey, sourceKey);
   }
 
   /**

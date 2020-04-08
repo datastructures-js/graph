@@ -23,12 +23,14 @@ class DirectedGraph {
    * adds a vertex to the graph
    * @param {number|string} key
    * @param {object} value
+   * @returns {Vertex}
    */
   addVertex(key, value) {
     this._vertices.set(key, new Vertex(key, value));
-    if (this._edges.has(key)) return;
-
-    this._edges.set(key, new Map());
+    if (!this._edges.has(key)) {
+      this._edges.set(key, new Map());
+    }
+    return this._vertices.get(key);
   }
 
   /**
@@ -47,11 +49,12 @@ class DirectedGraph {
    * @param {number|string} key
    */
   removeVertex(key) {
-    if (!this.hasVertex(key)) return;
+    if (!this.hasVertex(key)) return false;
 
     this.removeEdges(key);
     this._edges.delete(key);
     this._vertices.delete(key);
+    return true;
   }
 
   /**
@@ -69,6 +72,7 @@ class DirectedGraph {
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @param {number} weight
+   * @throws {Error} if a vertex key does not exist
    */
   addEdge(srcKey, destKey, weight) {
     if (!this._vertices.has(srcKey)) {
@@ -116,27 +120,34 @@ class DirectedGraph {
    * @param {number|string} destKey
    */
   removeEdge(srcKey, destKey) {
-    if (!this.hasEdge(srcKey, destKey)) return;
+    if (!this.hasEdge(srcKey, destKey)) return false;
 
     this._edges.get(srcKey).delete(destKey);
     this._edgesCount -= 1;
+    return true;
   }
 
   /**
    * @public
    * removes all outgoing edges of a vertex
    * @param {number|string} key
+   * @return {number} number of removed edges
    */
   removeEdges(key) {
-    if (!this.hasVertex(key)) return;
+    if (!this.hasVertex(key)) return 0;
 
+    let removed = 0;
     this._edges.forEach((destEdges, srcKey) => {
-      if (!destEdges.has(key)) return;
-      this.removeEdge(srcKey, key);
+      if (destEdges.has(key)) {
+        this.removeEdge(srcKey, key);
+        removed += 1;
+      }
     });
 
+    removed += this._edges.get(key).size;
     this._edgesCount -= this._edges.get(key).size;
     this._edges.set(key, new Map());
+    return removed;
   }
 
   /**
