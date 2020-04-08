@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [v4.0.0] - 2020-04-08
 ### Added
-`.removeEdges(key)` to remove all conncted edges (directions) from a vertex.
+`.removeEdges(key)` to remove all conncted edges in graph (directions in directed graph) from a vertex.
 
 #### Changed
 - `.removeEdge` & `.removeVertex` now return a boolean to indicated if something was removed.
