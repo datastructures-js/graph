@@ -40,6 +40,7 @@ class Graph extends DirectedGraph {
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @param {number} weight
+   * @throws {Error} if a vertex key does not exist
    */
   addEdge(sourceKey, destKey, weight) {
     super.addEdge(sourceKey, destKey, weight);
