@@ -436,9 +436,7 @@ traverses the graph using the depth-first recursive search.
  <tr>
   <th>runtime</th>
  </tr>
- <tr>
-  <tr><td>O(V) : V = the number of vertices in the graph</td></tr>
-</tr>
+ <tr><td>O(V) : V = the number of vertices in the graph</td></tr>
 </table>
 
 #### Example
@@ -474,9 +472,7 @@ traverses the graph using the breadth-first search with a queue.
  <tr>
   <th>runtime</th>
  </tr>
- <tr>
-  <tr><td>O(V) : V = the number of vertices in the graph</td></tr>
-</tr>
+ <tr><td>O(V) : V = the number of vertices in the graph</td></tr>
 </table>
 
 #### Example
