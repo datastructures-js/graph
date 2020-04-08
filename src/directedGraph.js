@@ -9,7 +9,7 @@ const Vertex = require('./vertex');
 
 /**
  * @class DirectedGraph
- * A graph with unidirectional path between vertices
+ * A graph with a directed path between vertices
  */
 class DirectedGraph {
   constructor() {
