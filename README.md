@@ -168,7 +168,7 @@ adds an edge with a weight between two existings vertices. Default weight is 1 i
   <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
   <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
-  <tr><td>weight</td><td>number</td><td>the weight of the edgey</td></tr>
+  <tr><td>weight</td><td>number</td><td>the weight of the edge</td></tr>
 </table>
 
 <table>
