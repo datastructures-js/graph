@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const Vertex = require('../src/vertex');
 const Graph = require('../src/graph');
 
 describe('Graph unit tests', () => {
@@ -6,11 +7,11 @@ describe('Graph unit tests', () => {
 
   describe('.addVertex(key, value)', () => {
     it('should add vertices the graph', () => {
-      graph.addVertex('v1', true);
-      graph.addVertex('v2', true);
-      graph.addVertex('v3', true);
-      graph.addVertex('v4', true);
-      graph.addVertex('v5', true);
+      expect(graph.addVertex('v1', true)).to.be.instanceof(Vertex);
+      expect(graph.addVertex('v2', true)).to.be.instanceof(Vertex);
+      expect(graph.addVertex('v3', true)).to.be.instanceof(Vertex);
+      expect(graph.addVertex('v4', true)).to.be.instanceof(Vertex);
+      expect(graph.addVertex('v5', true)).to.be.instanceof(Vertex);
     });
   });
 
@@ -36,16 +37,22 @@ describe('Graph unit tests', () => {
     });
   });
 
-  describe('.hasEdge(v1, v2)', () => {
+  describe('.hasEdge(srcKey, destKey)', () => {
     it('should have the added edges', () => {
       expect(graph.hasEdge('v1', 'v2')).to.equal(true);
+      expect(graph.hasEdge('v2', 'v1')).to.equal(true);
       expect(graph.hasEdge('v2', 'v3')).to.equal(true);
+      expect(graph.hasEdge('v3', 'v2')).to.equal(true);
       expect(graph.hasEdge('v1', 'v3')).to.equal(true);
+      expect(graph.hasEdge('v3', 'v1')).to.equal(true);
       expect(graph.hasEdge('v2', 'v4')).to.equal(true);
+      expect(graph.hasEdge('v4', 'v2')).to.equal(true);
       expect(graph.hasEdge('v3', 'v4')).to.equal(true);
-      expect(graph.hasEdge('v1', 'v2')).to.equal(true);
+      expect(graph.hasEdge('v4', 'v3')).to.equal(true);
       expect(graph.hasEdge('v4', 'v5')).to.equal(true);
+      expect(graph.hasEdge('v5', 'v4')).to.equal(true);
       expect(graph.hasEdge('v5', 'v3')).to.equal(true);
+      expect(graph.hasEdge('v3', 'v5')).to.equal(true);
     });
   });
 
@@ -85,9 +92,9 @@ describe('Graph unit tests', () => {
 
   describe('.traverseBfs(key, cb)', () => {
     it('should traverse the graph from a starting vertex using BFS', () => {
-      const vertices = [];
-      graph.traverseBfs('v5', (v) => vertices.push(v.getKey()));
-      expect(vertices).to.deep.equal(['v5', 'v4', 'v3', 'v2', 'v1']);
+      const keys = [];
+      graph.traverseBfs('v5', (vertex) => keys.push(vertex.getKey()));
+      expect(keys).to.deep.equal(['v5', 'v4', 'v3', 'v2', 'v1']);
     });
   });
 
@@ -112,6 +119,16 @@ describe('Graph unit tests', () => {
     it('does nothing when vertex does not exist', () => {
       graph.removeEdges('n1');
       expect(graph.edgesCount()).to.equal(4);
+    });
+
+    it('returns the number of removed edges', () => {
+      const g = new Graph();
+      g.addVertex('v1');
+      g.addVertex('v2');
+      g.addVertex('v3');
+      g.addEdge('v1', 'v2');
+      g.addEdge('v1', 'v3');
+      expect(g.removeEdges('v1')).to.equal(2);
     });
   });
 
