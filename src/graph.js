@@ -1,5 +1,5 @@
 /**
- * datastructures-js/graph
+ * @datastructures-js/graph
  * @copyright 2020 Eyas Ranjous <eyas.ranjous@gmail.com>
  * @license MIT
  */
@@ -9,31 +9,38 @@ const DirectedGraph = require('./directedGraph');
 /**
  * @class Graph
  * @extends DirectedGraph
- * A graph with bidirectional path between vertices
+ * A graph with a connecting edge between vertices
  */
 class Graph extends DirectedGraph {
   /**
    * @public
+   * @override
    * removes all edges of a vertex
    * @param {number|string} key
+   * @return {number} number of removed edges
    */
   removeEdges(key) {
-    if (!this.hasVertex(key)) return;
+    if (!this.hasVertex(key)) return 0;
 
-    this.edges.get(key).forEach((weight, destKey) => {
+    let removed = 0;
+    this._edges.get(key).forEach((weight, destKey) => {
       this.removeEdge(destKey, key);
+      removed += 1;
     });
 
-    this.edgeCount -= this.edges.get(key).size;
-    this.edges.set(key, new Map());
+    this._edgesCount -= this._edges.get(key).size;
+    this._edges.set(key, new Map());
+    return removed;
   }
 
   /**
    * @public
-   * add a bidirectional edge between source to a destination
+   * @override
+   * add a connecting edge between two vertices
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @param {number} weight
+   * @throws {Error} if a vertex key does not exist
    */
   addEdge(sourceKey, destKey, weight) {
     super.addEdge(sourceKey, destKey, weight);
@@ -42,18 +49,21 @@ class Graph extends DirectedGraph {
 
   /**
    * @public
-   * removes the bidirectional edge between two vertices
+   * @override
+   * removes the connecting edge between two vertices
    * @param {number|string} srcKey
    * @param {number|string} destKey
+   * @returns {boolean}
    */
   removeEdge(sourceKey, destKey) {
     super.removeEdge(sourceKey, destKey);
-    super.removeEdge(destKey, sourceKey);
+    return super.removeEdge(destKey, sourceKey);
   }
 
   /**
    * @public
-   * the number of edges in the graph
+   * @override
+   * the number of connecting edges in the graph
    * @returns {number}
    */
   edgesCount() {
