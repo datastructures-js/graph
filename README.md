@@ -322,10 +322,8 @@ removes a vertex with all its edges from the graph by its key.
  <tr>
   <th colspan="2">runtime</th>
  </tr>
- <tr>
   <tr><td>Graph</td><td>O(K) : K = number of connected edges to the vertex</td></tr>
   <tr><td>Directed Graph</td><td>O(E) : E = number of edges in the graph</td></tr>
- </tr>
 </table>
 
 #### Example
@@ -395,10 +393,8 @@ removes all connected edges to a vertex by its key.
  <tr>
   <th colspan="2">runtime</th>
  </tr>
- <tr>
   <tr><td>Graph</td><td>O(K) : K = number of connected edges to the vertex</td></tr>
   <tr><td>Directed Graph</td><td>O(E) : E = number of edges in the graph</td></tr>
- </tr>
 </table>
 
 #### Example
