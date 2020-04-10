@@ -383,7 +383,7 @@ removes all connected edges to a vertex by its key.
 </table>
 
 <table>
- <tr><th colspan="2" align="center">return</th><th></th></tr>
+ <tr><th>return</th><th>description</th></tr>
  <tr>
   <td>number</td><td>number of removed edges</td>
  </tr>
