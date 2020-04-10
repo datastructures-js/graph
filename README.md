@@ -165,7 +165,7 @@ adds an edge with a weight between two existings vertices. Default weight is 1 i
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
   <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
   <tr><td>weight</td><td>number</td><td>the weight of the edge</td></tr>
@@ -205,7 +205,7 @@ checks if the graph has an edge between two existing vertices. In directed graph
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
   <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
 </table>
@@ -268,7 +268,7 @@ gets the edge's weight between two vertices in the graph. If there is no direct 
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
   <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
 </table>
@@ -307,7 +307,7 @@ removes a vertex with all its edges from the graph by its key.
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>key</td><td>number or string</td><td>the vertex key</td></tr>
 </table>
 
@@ -345,7 +345,7 @@ removes an edge between two existing vertices
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
   <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
 </table>
@@ -380,12 +380,12 @@ removes all connected edges to a vertex by its key.
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>key</td><td>number or string</td><td>the vertex key</td></tr>
 </table>
 
 <table>
- <tr><th>return</th><th></th></tr>
+ <tr><th colspan="2" align="center">return</th><th></th></tr>
  <tr>
   <td>number</td><td>number of removed edges</td>
  </tr>
@@ -427,7 +427,7 @@ traverses the graph using the depth-first recursive search.
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the starting vertex key</td></tr>
   <tr><td>cb</td><td>function</td><td>the callback that is called with each vertex</td></tr>
 </table>
@@ -463,7 +463,7 @@ traverses the graph using the breadth-first search with a queue.
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the starting vertex key</td></tr>
   <tr><td>cb</td><td>function</td><td>the callback that is called with each vertex</td></tr>
 </table>
