@@ -164,7 +164,7 @@ console.log(graph.verticesCount()); // 5
 adds an edge with a weight between two existings vertices. Default weight is 1 if not defined. The edge is a direction from source to destination when added in a directed graph, and a connecting two-way edge when added in a graph.
 
 <table>
-  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><th align="center" colspan="3">params</th></tr>
   <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
   <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
@@ -204,7 +204,7 @@ graph.addEdge('v3', 'v5', 2);
 checks if the graph has an edge between two existing vertices. In directed graph, it returns true only if there is a direction from source to destination.
 
 <table>
-  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><th align="center" colspan="3">params</th></tr>
   <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
   <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
@@ -267,7 +267,7 @@ console.log(graph.edgesCount()); // 7
 gets the edge's weight between two vertices in the graph. If there is no direct edge between the two vertices, it returns null. It also returns 0 if the source key is equal to destination key.
 
 <table>
-  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><th align="center" colspan="3">params</th></tr>
   <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
   <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
@@ -306,7 +306,7 @@ console.log(graph.getWeight('v1', 'v4')); // null
 removes a vertex with all its edges from the graph by its key.
 
 <table>
-  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><th align="center" colspan="3">params</th></tr>
   <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>key</td><td>number or string</td><td>the vertex key</td></tr>
 </table>
@@ -344,7 +344,7 @@ console.log(graph.edgesCount()); // 5
 removes an edge between two existing vertices
 
 <table>
-  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><th align="center" colspan="3">params</th></tr>
   <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
   <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
@@ -379,7 +379,7 @@ console.log(graph.edgesCount()); // 4
 removes all connected edges to a vertex by its key.
 
 <table>
-  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><th align="center" colspan="3">params</th></tr>
   <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>key</td><td>number or string</td><td>the vertex key</td></tr>
 </table>
@@ -426,7 +426,7 @@ g.removeEdges('v1'); // 2
 traverses the graph using the depth-first recursive search.
 
 <table>
-  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><th align="center" colspan="3">params</th></tr>
   <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the starting vertex key</td></tr>
   <tr><td>cb</td><td>function</td><td>the callback that is called with each vertex</td></tr>
@@ -462,7 +462,7 @@ graph.traverseDfs('v1', (v) => console.log(v.serialize()));
 traverses the graph using the breadth-first search with a queue.
 
 <table>
-  <tr><th align="center" colspan="2">params</th></tr>
+  <tr><th align="center" colspan="3">params</th></tr>
   <tr><td><b>name</b></td><td><b>type</b></td><td><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the starting vertex key</td></tr>
   <tr><td>cb</td><td>function</td><td>the callback that is called with each vertex</td></tr>
