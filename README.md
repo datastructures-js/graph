@@ -65,7 +65,7 @@ adds a vertex to the graph.
 
 <table>
   <tr><th align="center" colspan="2">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td></tr>
   <tr><td>key</td><td>number or string</td></tr>
   <tr><td>value</td><td>object</td></tr>
 </table>
@@ -107,7 +107,7 @@ graph.addVertex('v5', true);
 checks if the graph has a vertex by its key.
 <table>
   <tr><th align="center" colspan="2">params</th></tr>
-  <tr><td><b>name</b></td><td><b>type</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td></tr>
   <tr><td>key</td><td>number or string</td></tr>
 </table>
 
