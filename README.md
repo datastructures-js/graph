@@ -423,7 +423,7 @@ traverses the graph using the depth-first recursive search.
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
+  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td align="center"><b>description</b></td></tr>
   <tr><td>srcKey</td><td>number or string</td><td>the starting vertex key</td></tr>
   <tr><td>cb</td><td>function</td><td>the callback that is called with each vertex</td></tr>
 </table>
