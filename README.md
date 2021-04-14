@@ -328,7 +328,7 @@ Removes all connected edges to a vertex and returns the number of removed edges.
   </tr>
   <tr>
     <td>
-      srcKey: number | string
+      key: number | string
     </td>
     <td align="center">number</td>
     <td>
