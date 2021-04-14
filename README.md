@@ -341,7 +341,7 @@ Removes all connected edges to a vertex and returns the number of removed edges.
 const dg = new DirectedGraph()
   .addVertex('v1')
   .addVertex('v2')
-  .addVertex('v3');
+  .addVertex('v3')
   .addEdge('v1', 'v2')
   .addEdge('v2', 'v1')
   .addEdge('v1', 'v3')
@@ -387,10 +387,10 @@ v3: 3
 
 graph.traverseDfs('v1', (key, value) => console.log(`${key}: ${value}`));
 /*
-v1: 1
-v2: 2
-v3: 3
-v4: 4
+v1: true
+v2: true
+v4: true
+v3: true
 */
 ```
 
@@ -425,10 +425,10 @@ v3: 3
 
 graph.traverseBfs('v1', (key, value) => console.log(`${key}: ${value}`));
 /*
-v1: 1
-v2: 2
-v3: 3
-v4: 4
+v1: true
+v2: true
+v3: true
+v4: true
 */
 ```
 
