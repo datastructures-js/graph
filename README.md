@@ -216,11 +216,6 @@ gets the number of edges in the graph.
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td>
-      srcKey: number | string
-      <br />
-      destKey: number | string
-    </td>
     <td align="center">number</td>
     <td align="center">O(1)</td>
   </tr>
