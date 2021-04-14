@@ -1,5 +1,5 @@
 /**
- * @datastructures-js/graph
+ * datastructures-js/graph
  * @copyright 2020 Eyas Ranjous <eyas.ranjous@gmail.com>
  * @license MIT
  */
@@ -9,48 +9,48 @@ const DirectedGraph = require('./directedGraph');
 /**
  * @class Graph
  * @extends DirectedGraph
- * A graph with a connecting edge between vertices
  */
 class Graph extends DirectedGraph {
   /**
+   * Removes all edges connected to a vertex
    * @public
    * @override
-   * removes all edges of a vertex
    * @param {number|string} key
-   * @return {number} number of removed edges
+   * @return {number} number of removedEdgesCount edges
    */
   removeEdges(key) {
-    if (!this.hasVertex(key)) return 0;
+    if (!this.hasVertex(key)) {
+      return 0;
+    }
 
-    let removed = 0;
+    let removedEdgesCount = 0;
     this._edges.get(key).forEach((weight, destKey) => {
       this.removeEdge(destKey, key);
-      removed += 1;
+      removedEdgesCount += 1;
     });
 
     this._edgesCount -= this._edges.get(key).size;
     this._edges.set(key, new Map());
-    return removed;
+    return removedEdgesCount;
   }
 
   /**
+   * Adds an edge between two existing vertices
    * @public
    * @override
-   * add a connecting edge between two vertices
    * @param {number|string} srcKey
    * @param {number|string} destKey
-   * @param {number} weight
-   * @throws {Error} if a vertex key does not exist
+   * @param {number} [weight] - default 1
    */
   addEdge(sourceKey, destKey, weight) {
     super.addEdge(sourceKey, destKey, weight);
-    super.addEdge(destKey, sourceKey, weight);
+    return super.addEdge(destKey, sourceKey, weight);
   }
 
   /**
+   * Removes the connecting edge between two vertices
    * @public
    * @override
-   * removes the connecting edge between two vertices
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @returns {boolean}
@@ -61,13 +61,13 @@ class Graph extends DirectedGraph {
   }
 
   /**
+   * Gets the number of edges in the graph
    * @public
    * @override
-   * the number of connecting edges in the graph
    * @returns {number}
    */
-  edgesCount() {
-    return super.edgesCount() / 2;
+  getEdgesCount() {
+    return super.getEdgesCount() / 2;
   }
 }
 

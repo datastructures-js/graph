@@ -1,6 +1,5 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const Vertex = require('../src/vertex');
 const DirectedGraph = require('../src/directedGraph');
 
 describe('DirectedGraph unit tests', () => {
@@ -8,12 +7,12 @@ describe('DirectedGraph unit tests', () => {
 
   describe('.addVertex(key, value)', () => {
     it('add vertices the graph', () => {
-      expect(directedGraph.addVertex('v1', 1)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v1', 1)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v2', 2)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v3', 3)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v4', 4)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v5', 5)).to.be.instanceof(Vertex);
+      expect(directedGraph.addVertex('v1', 1)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v1', 1)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v2', 2)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v3', 3)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v4', 4)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v5', 5)).to.be.instanceof(DirectedGraph);
     });
   });
 
@@ -69,15 +68,15 @@ describe('DirectedGraph unit tests', () => {
     });
   });
 
-  describe('.verticesCount()', () => {
+  describe('.getVerticesCount()', () => {
     it('get the vertices count', () => {
-      expect(directedGraph.verticesCount()).to.equal(5);
+      expect(directedGraph.getVerticesCount()).to.equal(5);
     });
   });
 
-  describe('edgesCount()', () => {
+  describe('getEdgesCount()', () => {
     it('get the edges count', () => {
-      expect(directedGraph.edgesCount()).to.equal(7);
+      expect(directedGraph.getEdgesCount()).to.equal(7);
     });
   });
 
@@ -99,7 +98,7 @@ describe('DirectedGraph unit tests', () => {
   describe('.traverseDfs(srcKey, cb)', () => {
     it('traverse the graph from a starting vertex using DFS', () => {
       const vertices = [];
-      directedGraph.traverseDfs('v1', (v) => vertices.push(v.getKey()));
+      directedGraph.traverseDfs('v1', (k) => vertices.push(k));
       expect(vertices).to.deep.equal(['v1', 'v2', 'v4', 'v3', 'v5']);
     });
   });
@@ -114,9 +113,9 @@ describe('DirectedGraph unit tests', () => {
     it('traverse the graph from a starting vertex using BFS', () => {
       const keys = [];
       const values = [];
-      directedGraph.traverseBfs('v1', (vertex) => {
-        keys.push(vertex.getKey());
-        values.push(vertex.getValue());
+      directedGraph.traverseBfs('v1', (k, v) => {
+        keys.push(k);
+        values.push(v);
       });
       expect(keys).to.deep.equal(['v1', 'v2', 'v3', 'v4', 'v5']);
       expect(values).to.deep.equal([1, 2, 3, 4, 5]);
@@ -126,8 +125,8 @@ describe('DirectedGraph unit tests', () => {
   describe('.removeVertex(key)', () => {
     it('does nothing when vertex does not exist', () => {
       expect(directedGraph.removeVertex('n1')).to.equal(false);
-      expect(directedGraph.verticesCount()).to.equal(5);
-      expect(directedGraph.edgesCount()).to.equal(7);
+      expect(directedGraph.getVerticesCount()).to.equal(5);
+      expect(directedGraph.getEdgesCount()).to.equal(7);
     });
 
     it('remove a vertex from the graph', () => {
@@ -135,23 +134,23 @@ describe('DirectedGraph unit tests', () => {
       expect(directedGraph.hasVertex('v5')).to.equal(false);
       expect(directedGraph.hasEdge('v3', 'v5')).to.equal(false);
       expect(directedGraph.hasEdge('v4', 'v5')).to.equal(false);
-      expect(directedGraph.verticesCount()).to.equal(4);
-      expect(directedGraph.edgesCount()).to.equal(5);
+      expect(directedGraph.getVerticesCount()).to.equal(4);
+      expect(directedGraph.getEdgesCount()).to.equal(5);
 
       expect(directedGraph.removeVertex('v3')).to.equal(true);
       expect(directedGraph.hasVertex('v3')).to.equal(false);
       expect(directedGraph.hasEdge('v1', 'v3')).to.equal(false);
       expect(directedGraph.hasEdge('v4', 'v3')).to.equal(false);
-      expect(directedGraph.verticesCount()).to.equal(3);
-      expect(directedGraph.edgesCount()).to.equal(3);
+      expect(directedGraph.getVerticesCount()).to.equal(3);
+      expect(directedGraph.getEdgesCount()).to.equal(3);
     });
   });
 
   describe('.removeEdge(srcKey, destKey)', () => {
     it('does nothing when vertex does not exist', () => {
       expect(directedGraph.removeEdge('n1', 'n2')).to.equal(false);
-      expect(directedGraph.verticesCount()).to.equal(3);
-      expect(directedGraph.edgesCount()).to.equal(3);
+      expect(directedGraph.getVerticesCount()).to.equal(3);
+      expect(directedGraph.getEdgesCount()).to.equal(3);
     });
 
     it('remove the edge between two vertices', () => {
@@ -163,7 +162,7 @@ describe('DirectedGraph unit tests', () => {
   describe('.removeEdges(key)', () => {
     it('does nothing when vertex does not exist', () => {
       expect(directedGraph.removeEdges('n1')).to.equal(0);
-      expect(directedGraph.edgesCount()).to.equal(2);
+      expect(directedGraph.getEdgesCount()).to.equal(2);
     });
 
     it('returns the number of removed edges', () => {
@@ -181,8 +180,8 @@ describe('DirectedGraph unit tests', () => {
   describe('.clear()', () => {
     it('clear the graph', () => {
       directedGraph.clear();
-      expect(directedGraph.verticesCount()).to.equal(0);
-      expect(directedGraph.edgesCount()).to.equal(0);
+      expect(directedGraph.getVerticesCount()).to.equal(0);
+      expect(directedGraph.getEdgesCount()).to.equal(0);
     });
   });
 });

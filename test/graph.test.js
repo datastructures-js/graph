@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const Vertex = require('../src/vertex');
+
 const Graph = require('../src/graph');
 
 describe('Graph unit tests', () => {
@@ -7,11 +7,11 @@ describe('Graph unit tests', () => {
 
   describe('.addVertex(key, value)', () => {
     it('should add vertices the graph', () => {
-      expect(graph.addVertex('v1', true)).to.be.instanceof(Vertex);
-      expect(graph.addVertex('v2', true)).to.be.instanceof(Vertex);
-      expect(graph.addVertex('v3', true)).to.be.instanceof(Vertex);
-      expect(graph.addVertex('v4', true)).to.be.instanceof(Vertex);
-      expect(graph.addVertex('v5', true)).to.be.instanceof(Vertex);
+      expect(graph.addVertex('v1', true)).to.be.instanceof(Graph);
+      expect(graph.addVertex('v2', true)).to.be.instanceof(Graph);
+      expect(graph.addVertex('v3', true)).to.be.instanceof(Graph);
+      expect(graph.addVertex('v4', true)).to.be.instanceof(Graph);
+      expect(graph.addVertex('v5', true)).to.be.instanceof(Graph);
     });
   });
 
@@ -56,15 +56,15 @@ describe('Graph unit tests', () => {
     });
   });
 
-  describe('.verticesCount()', () => {
+  describe('.getVerticesCount()', () => {
     it('should get the vertices count', () => {
-      expect(graph.verticesCount()).to.equal(5);
+      expect(graph.getVerticesCount()).to.equal(5);
     });
   });
 
-  describe('edgesCount()', () => {
+  describe('getEdgesCount()', () => {
     it('get the edges count', () => {
-      expect(graph.edgesCount()).to.equal(7);
+      expect(graph.getEdgesCount()).to.equal(7);
     });
   });
 
@@ -78,14 +78,14 @@ describe('Graph unit tests', () => {
       expect(graph.getWeight('v4', 'v5')).to.equal(4);
       expect(graph.getWeight('v3', 'v5')).to.equal(2);
       expect(graph.getWeight('v5', 'v5')).to.equal(0);
-      expect(graph.getWeight('v3', 'v10')).to.equal(null);
+      expect(graph.getWeight('v3', 'v10')).to.equal(Infinity);
     });
   });
 
   describe('.traverseDfs(key, cb, type)', () => {
     it('should traverse the graph from a starting vertex using DFS', () => {
       const vertices = [];
-      graph.traverseDfs('v1', (v) => vertices.push(v.getKey()));
+      graph.traverseDfs('v1', (k) => vertices.push(k));
       expect(vertices).to.deep.equal(['v1', 'v2', 'v3', 'v4', 'v5']);
     });
   });
@@ -93,7 +93,7 @@ describe('Graph unit tests', () => {
   describe('.traverseBfs(key, cb)', () => {
     it('should traverse the graph from a starting vertex using BFS', () => {
       const keys = [];
-      graph.traverseBfs('v5', (vertex) => keys.push(vertex.getKey()));
+      graph.traverseBfs('v5', (k) => keys.push(k));
       expect(keys).to.deep.equal(['v5', 'v4', 'v3', 'v2', 'v1']);
     });
   });
@@ -104,7 +104,7 @@ describe('Graph unit tests', () => {
       expect(graph.hasVertex('v5')).to.equal(false);
       expect(graph.hasEdge('v4', 'v5')).to.equal(false);
       expect(graph.hasEdge('v3', 'v5')).to.equal(false);
-      expect(graph.verticesCount()).to.equal(4);
+      expect(graph.getVerticesCount()).to.equal(4);
     });
   });
 
@@ -118,7 +118,7 @@ describe('Graph unit tests', () => {
   describe('.removeEdges(key)', () => {
     it('does nothing when vertex does not exist', () => {
       graph.removeEdges('n1');
-      expect(graph.edgesCount()).to.equal(4);
+      expect(graph.getEdgesCount()).to.equal(4);
     });
 
     it('returns the number of removed edges', () => {
@@ -135,7 +135,7 @@ describe('Graph unit tests', () => {
   describe('.clear()', () => {
     it('should clear the graph', () => {
       graph.clear();
-      expect(graph.verticesCount()).to.equal(0);
+      expect(graph.getVerticesCount()).to.equal(0);
     });
   });
 });
