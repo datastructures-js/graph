@@ -272,7 +272,7 @@ removes a vertex with all its edges from the graph.
     </td>
     <td align="center">boolean</td>
     <td>
-      Graph: O(K) : K = number of connected edges to the node
+      Graph: O(K) : K = number of connected edges to the vertex
       <br />
       DirectedGraph: O(E) : E = number of edges in the graph
     </td>
@@ -318,48 +318,45 @@ console.log(graph.getEdgesCount()); // 4
 ```
 
 ### .removeEdges(key)
-removes all connected edges to a vertex by its key.
+Removes all connected edges to a vertex and returns the number of removed edges.
 
 <table>
-  <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
-  <tr><td>key</td><td>number or string</td><td>the vertex key</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td>
+      srcKey: number | string
+    </td>
+    <td align="center">number</td>
+    <td align="center">
+      Graph: O(K) : K = number of connected edges to the vertex
+      <br />
+      DirectedGraph: O(E) : E = number of edges in the graph
+    </td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th><th>description</th></tr>
- <tr>
-  <td>number</td><td>number of removed edges</td>
- </tr>
-</table>
-
-<table>
- <tr>
-  <th colspan="2">runtime</th>
- </tr>
-  <tr><td>Graph</td><td>O(K) : K = number of connected edges to the vertex</td></tr>
-  <tr><td>Directed Graph</td><td>O(E) : E = number of edges in the graph</td></tr>
-</table>
-
-#### Example
 
 ```js
 const dg = new DirectedGraph();
-dg.addVertex('v1');
-dg.addVertex('v2');
-dg.addVertex('v3');
-dg.addEdge('v1', 'v2');
-dg.addEdge('v2', 'v1'); // this is counted as a direction in directed graph.
-dg.addEdge('v1', 'v3');
-dg.removeEdges('v1'); // 3
+dg
+  .addVertex('v1')
+  .addVertex('v2')
+  .addVertex('v3');
+  .addEdge('v1', 'v2')
+  .addEdge('v2', 'v1') // this is accounted as a direction in directed graph.
+  .addEdge('v1', 'v3');
+  .removeEdges('v1'); // 3
 
 const g = new Graph();
-g.addVertex('v1');
-g.addVertex('v2');
-g.addVertex('v3');
-g.addEdge('v1', 'v2');
-g.addEdge('v1', 'v3');
-g.removeEdges('v1'); // 2
+  .addVertex('v1')
+  .addVertex('v2')
+  .addVertex('v3')
+  .addEdge('v1', 'v2')
+  .addEdge('v1', 'v3')
+  .removeEdges('v1'); // 2
 ```
 
 ### .traverseDfs(srcKey, cb)
