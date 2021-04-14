@@ -88,6 +88,7 @@ class DirectedGraph {
     const w = Number.isNaN(+weight) ? 1 : +weight;
     this._edges.get(srcKey).set(destKey, w);
     this._edgesCount += 1;
+    return this;
   }
 
   /**
