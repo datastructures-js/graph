@@ -44,7 +44,7 @@ class Graph extends DirectedGraph {
    */
   addEdge(sourceKey, destKey, weight) {
     super.addEdge(sourceKey, destKey, weight);
-    super.addEdge(destKey, sourceKey, weight);
+    return super.addEdge(destKey, sourceKey, weight);
   }
 
   /**
