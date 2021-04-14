@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - getters.
 
 ### Fixed
-`.getWeight` now returns `Infinity` for two vertices that are not connected.
+- `.getWeight` now returns `Infinity` for two vertices that are not connected.
 - README
 
 ## [v4.0.1] - 2020-04-10
