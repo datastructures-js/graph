@@ -378,20 +378,20 @@ Traverses the graph using the depth-first recursive search.
 </table>
 
 ```js
-directedGraph.traverseDfs('v1', (v) => console.log(`${v.getKey()}:${v.getValue()}`));
+directedGraph.traverseDfs('v1', (key, value) => console.log(`${key}: ${value}`));
 /*
-v1:1
-v2:2
-v4:4
-v3:3
+v1: 1
+v2: 2
+v4: 4
+v3: 3
 */
 
-graph.traverseDfs('v1', (v) => console.log(v.serialize()));
+graph.traverseDfs('v1', (key, value) => console.log(`${key}: ${value}`));
 /*
-{ key: 'v1', value: true }
-{ key: 'v2', value: true }
-{ key: 'v4', value: true }
-{ key: 'v3', value: true }
+v1: 1
+v2: 2
+v3: 3
+v4: 4
 */
 ```
 
@@ -416,20 +416,20 @@ Traverses the graph using the breadth-first search with a queue.
 </table>
 
 ```js
-directedGraph.traverseBfs('v1', (v) => console.log(`${v.getKey()}:${v.getValue()}`));
+directedGraph.traverseBfs('v1', (key, value) => console.log(`${key}: ${value}`));
 /*
-v1:1
-v2:2
-v4:4
-v3:3
+v1: 1
+v2: 2
+v4: 4
+v3: 3
 */
 
-graph.traverseBfs('v1', (v) => console.log(v.serialize()));
+graph.traverseBfs('v1', (key, value) => console.log(`${key}: ${value}`));
 /*
-{ key: 'v1', value: true }
-{ key: 'v2', value: true }
-{ key: 'v3', value: true }
-{ key: 'v4', value: true }
+v1: 1
+v2: 2
+v3: 3
+v4: 4
 */
 ```
 
