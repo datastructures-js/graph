@@ -70,9 +70,10 @@ adds a vertex to the graph.
   <tr>
     <td>
       key: number | string
+      <br />
       value: any
     </td>
-    <td align="center">DirectedGraph | Graph</td>
+    <td align="center">Graph | DirectedGraph</td>
     <td align="center">O(1)</td>
   </tr>
 </table>
@@ -121,22 +122,15 @@ console.log(graph.hasVertex('v1')); // true
 gets the number of vertices in the graph.
 
 <table>
- <tr><th>return</th></tr>
- <tr>
-  <td>number</td>
- </tr>
+  <tr>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">number</td>
+    <td align="center">O(1)</td>
+  </tr>
 </table>
-
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr>
-  <td>O(1)</td>
- </tr>
-</table>
-
-#### Example
 
 ```js
 console.log(directedGraph.getVerticesCount()); // 5
@@ -144,43 +138,45 @@ console.log(graph.getVerticesCount()); // 5
 ```
 
 ### .addEdge(srcKey, destKey, weight)
-adds an edge with a weight between two existings vertices. Default weight is 1 if not defined. The edge is a direction from source to destination when added in a directed graph, and a connecting two-way edge when added in a graph.
+adds a weighted edge between two existings vertices. Default weight is 1 if not defined. The edge is a direction from source to destination when added in a directed graph, and a two-way connection when added in a graph.
 
 <table>
-  <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
-  <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
-  <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
-  <tr><td>weight</td><td>number</td><td>the weight of the edge</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td align="center">
+      srcKey: number | string
+      <br />
+      destKey: number | string
+      <br />
+      weight: number
+    </td>
+    <td align="center">Graph | DirectedGraph</td>
+    <td align="center">O(1)</td>
+  </tr>
 </table>
-
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr>
-  <td>O(1)</td>
- </tr>
-</table>
-
-#### Example
 
 ```js
-directedGraph.addEdge('v1', 'v2', 2);
-directedGraph.addEdge('v1', 'v3', 3);
-directedGraph.addEdge('v1', 'v4', 1);
-directedGraph.addEdge('v2', 'v4', 1);
-directedGraph.addEdge('v3', 'v5', 2);
-directedGraph.addEdge('v4', 'v3', 1);
-directedGraph.addEdge('v4', 'v5', 4);
+directedGraph
+  .addEdge('v1', 'v2', 2)
+  .addEdge('v1', 'v3', 3)
+  .addEdge('v1', 'v4', 1)
+  .addEdge('v2', 'v4', 1)
+  .addEdge('v3', 'v5', 2)
+  .addEdge('v4', 'v3', 1)
+  .addEdge('v4', 'v5', 4);
 
-graph.addEdge('v1', 'v2', 2);
-graph.addEdge('v2', 'v3', 3);
-graph.addEdge('v1', 'v3', 6);
-graph.addEdge('v2', 'v4', 1);
-graph.addEdge('v4', 'v3', 1);
-graph.addEdge('v4', 'v5', 4);
-graph.addEdge('v3', 'v5', 2);
+graph
+  .addEdge('v1', 'v2', 2)
+  .addEdge('v2', 'v3', 3)
+  .addEdge('v1', 'v3', 6)
+  .addEdge('v2', 'v4', 1)
+  .addEdge('v4', 'v3', 1)
+  .addEdge('v4', 'v5', 4)
+  .addEdge('v3', 'v5', 2);
 ```
 
 ### .hasEdge(srcKey, destKey)
