@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [v5.0.0] - 2021-04-15
+### Changed
+- `addVertex` & `addEdge` now can be chained.
+- remove `Vertex` class overhead, simply use key-value.
+
+### Fixed
+`.getWeight` now returns `Infinity` for two vertices that are not connected.
+- README
+
 ## [v4.0.1] - 2020-04-10
 ### Fixed
 - README
