@@ -50,7 +50,7 @@ import { Graph, DirectedGraph } from '@datastructures-js/graph';
 ```
 
 ### new
-creates a new graph
+Creates a new graph
 
 ```js
 const directedGraph = new DirectedGraph();
@@ -59,7 +59,7 @@ const graph = new Graph();
 ```
 
 ### .addVertex(key, value)
-adds a vertex to the graph.
+Adds a vertex to the graph.
 
 <table>
   <tr>
@@ -96,7 +96,7 @@ graph
 ```
 
 ### .hasVertex(key)
-checks if the graph has a vertex by its key.
+Checks if the graph has a vertex by its key.
 
 <table>
   <tr>
@@ -119,7 +119,7 @@ console.log(graph.hasVertex('v1')); // true
 ```
 
 ### .getVerticesCount()
-gets the number of vertices in the graph.
+Gets the number of vertices in the graph.
 
 <table>
   <tr>
@@ -138,7 +138,7 @@ console.log(graph.getVerticesCount()); // 5
 ```
 
 ### .addEdge(srcKey, destKey, weight)
-adds a weighted edge between two existings vertices. Default weight is 1 if not defined. The edge is a direction from source to destination when added in a directed graph, and a two-way connection when added in a graph.
+Adds a weighted edge between two existings vertices. Default weight is 1 if not defined. The edge is a direction from source to destination when added in a directed graph, and a two-way connection when added in a graph.
 
 <table>
   <tr>
@@ -180,7 +180,7 @@ graph
 ```
 
 ### .hasEdge(srcKey, destKey)
-checks if the graph has an edge between two existing vertices. In directed graph, it returns true only if there is a direction from source to destination.
+Checks if the graph has an edge between two existing vertices. In directed graph, it returns true only if there is a direction from source to destination.
 
 <table>
   <tr>
@@ -208,7 +208,7 @@ console.log(graph.hasEdge('v2', 'v1')); // true
 ```
 
 ### .getEdgesCount()
-gets the number of edges in the graph.
+Gets the number of edges in the graph.
 
 <table>
   <tr>
@@ -227,7 +227,7 @@ console.log(graph.getEdgesCount()); // 7
 ```
 
 ### .getWeight(srcKey, destKey)
-gets the edge's weight between two vertices. If there is no direct edge between the two vertices, it returns `Infinity`. It also returns 0 if the source key is equal to destination key.
+Gets the edge's weight between two vertices. If there is no direct edge between the two vertices, it returns `Infinity`. It also returns 0 if the source key is equal to destination key.
 
 <table>
   <tr>
@@ -258,7 +258,7 @@ console.log(graph.getWeight('v1', 'v4')); // null
 ```
 
 ### .removeVertex(key)
-removes a vertex with all its edges from the graph.
+Removes a vertex with all its edges from the graph.
 
 <table>
   <tr>
@@ -290,7 +290,7 @@ console.log(graph.getEdgesCount()); // 5
 ```
 
 ### .removeEdge(srcKey, destKey)
-removes an edge between two existing vertices
+Removes an edge between two existing vertices
 
 <table>
   <tr>
@@ -340,17 +340,16 @@ Removes all connected edges to a vertex and returns the number of removed edges.
 </table>
 
 ```js
-const dg = new DirectedGraph();
-dg
+const dg = new DirectedGraph()
   .addVertex('v1')
   .addVertex('v2')
   .addVertex('v3');
   .addEdge('v1', 'v2')
-  .addEdge('v2', 'v1') // this is accounted as a direction in directed graph.
-  .addEdge('v1', 'v3');
+  .addEdge('v2', 'v1')
+  .addEdge('v1', 'v3')
   .removeEdges('v1'); // 3
 
-const g = new Graph();
+const g = new Graph()
   .addVertex('v1')
   .addVertex('v2')
   .addVertex('v3')
@@ -360,23 +359,25 @@ const g = new Graph();
 ```
 
 ### .traverseDfs(srcKey, cb)
-traverses the graph using the depth-first recursive search.
+Traverses the graph using the depth-first recursive search.
 
 <table>
-  <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td align="center"><b>description</b></td></tr>
-  <tr><td>srcKey</td><td>number or string</td><td>the starting vertex key</td></tr>
-  <tr><td>cb</td><td>function</td><td>the callback that is called with each vertex</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td>
+      srcKey: number | string
+      <br />
+      cb: function
+    </td>
+    <td>
+      O(V) : V = number of vertices in the graph
+    </td>
+  </tr>
 </table>
 
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr><td>O(V) : V = the number of vertices in the graph</td></tr>
-</table>
-
-#### Example
 ```js
 directedGraph.traverseDfs('v1', (v) => console.log(`${v.getKey()}:${v.getValue()}`));
 /*
@@ -396,23 +397,24 @@ graph.traverseDfs('v1', (v) => console.log(v.serialize()));
 ```
 
 ### .traverseBfs(srcKey, cb)
-traverses the graph using the breadth-first search with a queue.
+Traverses the graph using the breadth-first search with a queue.
 
 <table>
-  <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td align="center"><b>description</b></td></tr>
-  <tr><td>srcKey</td><td>number or string</td><td>the starting vertex key</td></tr>
-  <tr><td>cb</td><td>function</td><td>the callback that is called with each vertex</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td>
+      srcKey: number | string
+      <br />
+      cb: function
+    </td>
+    <td>
+      O(V) : V = number of vertices in the graph
+    </td>
+  </tr>
 </table>
-
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr><td>O(V) : V = the number of vertices in the graph</td></tr>
-</table>
-
-#### Example
 
 ```js
 directedGraph.traverseBfs('v1', (v) => console.log(`${v.getKey()}:${v.getValue()}`));
@@ -433,7 +435,7 @@ graph.traverseBfs('v1', (v) => console.log(v.serialize()));
 ```
 
 ### .clear()
-clears all vertices and edges in the graph.
+Clears all vertices and edges in the graph.
 
 <table>
  <tr>
@@ -444,8 +446,6 @@ clears all vertices and edges in the graph.
  </tr>
 </table>
 
-#### Example
-
 ```js
 directedGraph.clear();
 console.log(directedGraph.getVerticesCount()); // 0
@@ -455,24 +455,6 @@ graph.clear();
 console.log(graph.getVerticesCount()); // 0
 console.log(graph.getEdgesCount()); // 0
 ```
-
-### Vertex
-
-#### .getKey()
-returns the vertex key.
-
-<table>
- <tr><th>return</th></tr>
- <tr><td>string or number</td></tr>
-</table>
-
-#### .getValue()
-returns the vertex associated value.
-
-<table>
- <tr><th>return</th></tr>
- <tr><td>object</td></tr>
-</table>
 
 ## Build
 ```
