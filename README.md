@@ -331,7 +331,7 @@ Removes all connected edges to a vertex and returns the number of removed edges.
       srcKey: number | string
     </td>
     <td align="center">number</td>
-    <td align="center">
+    <td>
       Graph: O(K) : K = number of connected edges to the vertex
       <br />
       DirectedGraph: O(E) : E = number of edges in the graph
