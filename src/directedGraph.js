@@ -61,7 +61,7 @@ class DirectedGraph {
    * @public
    * @return {number}
    */
-  verticesCount() {
+  getVerticesCount() {
     return this._vertices.size;
   }
 
@@ -111,12 +111,12 @@ class DirectedGraph {
    * @returns {number}
    */
   getWeight(srcKey, destKey) {
-    if (!this.hasEdge(srcKey, destKey)) {
-      return Infinity;
-    }
-
     if (this.hasVertex(srcKey) && srcKey === destKey) {
       return 0;
+    }
+
+    if (!this.hasEdge(srcKey, destKey)) {
+      return Infinity;
     }
 
     return this._edges.get(srcKey).get(destKey);
@@ -168,7 +168,7 @@ class DirectedGraph {
    * @public
    * @returns {number}
    */
-  edgesCount() {
+  getEdgesCount() {
     return this._edgesCount;
   }
 
