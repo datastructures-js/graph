@@ -1,6 +1,5 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const Vertex = require('../src/vertex');
 const DirectedGraph = require('../src/directedGraph');
 
 describe('DirectedGraph unit tests', () => {
@@ -8,12 +7,12 @@ describe('DirectedGraph unit tests', () => {
 
   describe('.addVertex(key, value)', () => {
     it('add vertices the graph', () => {
-      expect(directedGraph.addVertex('v1', 1)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v1', 1)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v2', 2)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v3', 3)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v4', 4)).to.be.instanceof(Vertex);
-      expect(directedGraph.addVertex('v5', 5)).to.be.instanceof(Vertex);
+      expect(directedGraph.addVertex('v1', 1)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v1', 1)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v2', 2)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v3', 3)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v4', 4)).to.be.instanceof(DirectedGraph);
+      expect(directedGraph.addVertex('v5', 5)).to.be.instanceof(DirectedGraph);
     });
   });
 
@@ -99,7 +98,7 @@ describe('DirectedGraph unit tests', () => {
   describe('.traverseDfs(srcKey, cb)', () => {
     it('traverse the graph from a starting vertex using DFS', () => {
       const vertices = [];
-      directedGraph.traverseDfs('v1', (v) => vertices.push(v.getKey()));
+      directedGraph.traverseDfs('v1', (k, v) => vertices.push(k));
       expect(vertices).to.deep.equal(['v1', 'v2', 'v4', 'v3', 'v5']);
     });
   });
@@ -114,9 +113,9 @@ describe('DirectedGraph unit tests', () => {
     it('traverse the graph from a starting vertex using BFS', () => {
       const keys = [];
       const values = [];
-      directedGraph.traverseBfs('v1', (vertex) => {
-        keys.push(vertex.getKey());
-        values.push(vertex.getValue());
+      directedGraph.traverseBfs('v1', (k, v) => {
+        keys.push(k);
+        values.push(v);
       });
       expect(keys).to.deep.equal(['v1', 'v2', 'v3', 'v4', 'v5']);
       expect(values).to.deep.equal([1, 2, 3, 4, 5]);

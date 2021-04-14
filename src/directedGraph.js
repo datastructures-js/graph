@@ -1,15 +1,13 @@
 /**
- * @datastructures-js/graph
+ * datastructures-js/graph
  * @copyright 2020 Eyas Ranjous <eyas.ranjous@gmail.com>
  * @license MIT
  */
 
 const Queue = require('@datastructures-js/queue');
-const Vertex = require('./vertex');
 
 /**
- * @class DirectedGraph
- * A graph with a directed path between vertices
+ * @class
  */
 class DirectedGraph {
   constructor() {
@@ -19,23 +17,23 @@ class DirectedGraph {
   }
 
   /**
+   * Adds a vertex to the graph
    * @public
-   * adds a vertex to the graph
    * @param {number|string} key
    * @param {object} value
-   * @returns {Vertex}
+   * @return {DirectedGraph}
    */
   addVertex(key, value) {
-    this._vertices.set(key, new Vertex(key, value));
+    this._vertices.set(key, value);
     if (!this._edges.has(key)) {
       this._edges.set(key, new Map());
     }
-    return this._vertices.get(key);
+    return this;
   }
 
   /**
+   * Checks if the graph has a vertex
    * @public
-   * checks if the graph has a vertex by its key
    * @param {number|string} key
    * @return {boolean}
    */
@@ -44,9 +42,10 @@ class DirectedGraph {
   }
 
   /**
+   * Removes a vertex and all its edges from the graph
    * @public
-   * remove a vertex and all its in and out edges
    * @param {number|string} key
+   * @return {boolean}
    */
   removeVertex(key) {
     if (!this.hasVertex(key)) return false;
@@ -58,21 +57,20 @@ class DirectedGraph {
   }
 
   /**
+   * Returns the number of vertices in the graph
    * @public
-   * the number of vertices in the graph
-   * @returns {number}
+   * @return {number}
    */
   verticesCount() {
     return this._vertices.size;
   }
 
   /**
+   * Adds a directed edge from a source vertex to a destination
    * @public
-   * add a direction from source to destination
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @param {number} weight
-   * @throws {Error} if a vertex key does not exist
    */
   addEdge(srcKey, destKey, weight) {
     if (!this._vertices.has(srcKey)) {
@@ -82,14 +80,14 @@ class DirectedGraph {
     if (!this._vertices.has(destKey)) {
       throw new Error(`addEdge: vertex "${destKey}" not found`);
     }
-
-    this._edges.get(srcKey).set(destKey, +weight || 1);
+    const w = Number.isNaN(+weight) ? 1 : +weight;
+    this._edges.get(srcKey).set(destKey, w);
     this._edgesCount += 1;
   }
 
   /**
+   * Checks if there is a direction between two nodes
    * @public
-   * checks if there is a direction from source to destination
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @returns {boolean}
@@ -101,26 +99,34 @@ class DirectedGraph {
   }
 
   /**
+   * Gets the weight of an edge if exists
    * @public
-   * get the weight of an edge if exists
    * @param {number|string} srcKey
    * @param {number|string} destKey
    * @returns {number}
    */
   getWeight(srcKey, destKey) {
-    if (this.hasVertex(srcKey) && srcKey === destKey) return 0;
-    if (!this.hasEdge(srcKey, destKey)) return null;
+    if (!this.hasEdge(srcKey, destKey)) {
+      return Infinity;
+    }
+
+    if (this.hasVertex(srcKey) && srcKey === destKey) {
+      return 0;
+    } 
+
     return this._edges.get(srcKey).get(destKey);
   }
 
   /**
+   * Removes the direction from source to destination
    * @public
-   * removes the direction from source to destination
    * @param {number|string} srcKey
    * @param {number|string} destKey
    */
   removeEdge(srcKey, destKey) {
-    if (!this.hasEdge(srcKey, destKey)) return false;
+    if (!this.hasEdge(srcKey, destKey)) {
+      return false;
+    }
 
     this._edges.get(srcKey).delete(destKey);
     this._edgesCount -= 1;
@@ -128,31 +134,33 @@ class DirectedGraph {
   }
 
   /**
+   * Removes in and out directions of a vertex
    * @public
-   * removes all directions from and to a vertex
    * @param {number|string} key
    * @return {number} number of removed edges
    */
   removeEdges(key) {
-    if (!this.hasVertex(key)) return 0;
+    if (!this.hasVertex(key)) {
+      return 0;
+    }
 
-    let removed = 0;
+    let removedEdgesCount = 0;
     this._edges.forEach((destEdges, srcKey) => {
       if (destEdges.has(key)) {
         this.removeEdge(srcKey, key);
-        removed += 1;
+        removedEdgesCount += 1;
       }
     });
 
-    removed += this._edges.get(key).size;
+    removedEdgesCount += this._edges.get(key).size;
     this._edgesCount -= this._edges.get(key).size;
     this._edges.set(key, new Map());
-    return removed;
+    return removedEdgesCount;
   }
 
   /**
+   * Returns the number of edges in the graph
    * @public
-   * the number of directions in the graph
    * @returns {number}
    */
   edgesCount() {
@@ -160,15 +168,15 @@ class DirectedGraph {
   }
 
   /**
+   * Traverse all vertices in the graph using depth-first search
    * @public
-   * traverse all vertices in the graph using depth-first search
-   * @param {number|string} srcKey
+   * @param {number|string} srcKey - starting node
    * @param {function} cb
    */
   traverseDfs(srcKey, cb, visited = new Set()) {
     if (!this.hasVertex(srcKey) || visited.has(srcKey)) return;
 
-    cb(this._vertices.get(srcKey));
+    cb(srcKey, this._vertices.get(srcKey));
     visited.add(srcKey);
 
     this._edges.get(srcKey).forEach((weight, destKey) => {
@@ -177,9 +185,9 @@ class DirectedGraph {
   }
 
   /**
+   * Traverse all vertices in the graph using breadth-first search
    * @public
-   * traverse all vertices in the graph using breadth-first search
-   * @param {number|string} srcKey
+   * @param {number|string} srcKey - starting node
    * @param {function} cb
    */
   traverseBfs(srcKey, cb) {
@@ -189,19 +197,20 @@ class DirectedGraph {
     const visited = new Set([srcKey]);
 
     while (!queue.isEmpty()) {
-      const vertex = this._vertices.get(queue.dequeue());
-      cb(vertex);
-      this._edges.get(vertex.getKey()).forEach((weight, destKey) => {
-        if (visited.has(destKey)) return;
-        queue.enqueue(destKey);
-        visited.add(destKey);
+      const nextKey = queue.dequeue();
+      cb(nextKey, this._vertices.get(nextKey));
+      this._edges.get(nextKey).forEach((weight, destKey) => {
+        if (!visited.has(destKey)) {
+          queue.enqueue(destKey);
+          visited.add(destKey);
+        }
       });
     }
   }
 
   /**
+   * Clears the graph
    * @public
-   * clears the graph
    */
   clear() {
     this._vertices = new Map();
