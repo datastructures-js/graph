@@ -13,13 +13,13 @@
 * [API](#api)
   * [require](#require)
   * [import](#import)
-  * [Creating a Graph](#create-a-graph)
+  * [new](#new)
   * [.addVertex(key, value)](#addvertexkey-value)
   * [.hasVertex(key)](#hasvvertex-key)
-  * [.verticesCount()](#verticescount)
+  * [.getVerticesCount()](#getverticescount)
   * [.addEdge(srcKey, destKey, weight)](#addedgesrckey-destkey-weight)
   * [.hasEdge(srcKey, destKey)](#hasedgesrckey-destkey)
-  * [.edgesCount()](#edgescount)
+  * [.getEdgesCount()](#getedgescount)
   * [.getWeight(srcKey, destKey)](#getweightsrcKey-destKey)
   * [.removeVertex(key)](#removevertexkey)
   * [.removeEdge(key)](#removeedgesrckey-destkey)
@@ -49,10 +49,8 @@ const { Graph, DirectedGraph } = require('@datastructures-js/graph');
 import { Graph, DirectedGraph } from '@datastructures-js/graph';
 ```
 
-### create a graph
-creates an empty graph
-
-#### Example
+### new
+creates a new graph
 
 ```js
 const directedGraph = new DirectedGraph();
@@ -64,77 +62,62 @@ const graph = new Graph();
 adds a vertex to the graph.
 
 <table>
-  <tr><th align="center" colspan="2">params</th></tr>
-  <tr><td><b>name</b></td><td align="center"><b>type</b></td></tr>
-  <tr><td>key</td><td>number or string</td></tr>
-  <tr><td>value</td><td>object</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td>
+      key: number | string
+      value: any
+    </td>
+    <td align="center">DirectedGraph | Graph</td>
+    <td align="center">O(1)</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th></tr>
- <tr>
-  <td><a href="#vertex">Vertex</a></td>
- </tr>
-</table>
-
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr>
-  <td>O(1)</td>
- </tr>
-</table>
-
-#### Example
 
 ```js
-directedGraph.addVertex('v1', 1);
-directedGraph.addVertex('v1', 1);
-directedGraph.addVertex('v2', 2);
-directedGraph.addVertex('v3', 3);
-directedGraph.addVertex('v4', 4);
-directedGraph.addVertex('v5', 5);
+directedGraph
+  .addVertex('v1', 1)
+  .addVertex('v1', 1)
+  .addVertex('v2', 2)
+  .addVertex('v3', 3)
+  .addVertex('v4', 4)
+  .addVertex('v5', 5);
 
-graph.addVertex('v1', true);
-graph.addVertex('v2', true);
-graph.addVertex('v3', true);
-graph.addVertex('v4', true);
-graph.addVertex('v5', true);
+graph
+  .addVertex('v1', true)
+  .addVertex('v2', true)
+  .addVertex('v3', true)
+  .addVertex('v4', true)
+  .addVertex('v5', true);
 ```
 
 ### .hasVertex(key)
 checks if the graph has a vertex by its key.
-<table>
-  <tr><th align="center" colspan="2">params</th></tr>
-  <tr><td><b>name</b></td><td align="center"><b>type</b></td></tr>
-  <tr><td>key</td><td>number or string</td></tr>
-</table>
 
 <table>
- <tr><th>return</th></tr>
- <tr>
-  <td>boolean</td>
- </tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td>
+      key: number | string
+    </td>
+    <td align="center">boolean</td>
+    <td align="center">O(1)</td>
+  </tr>
 </table>
-
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr>
-  <td>O(1)</td>
- </tr>
-</table>
-
-#### Example
 
 ```js
 console.log(directedGraph.hasVertex('v7')); // false
 console.log(graph.hasVertex('v1')); // true
 ```
 
-### .verticesCount()
+### .getVerticesCount()
 gets the number of vertices in the graph.
 
 <table>
@@ -156,8 +139,8 @@ gets the number of vertices in the graph.
 #### Example
 
 ```js
-console.log(directedGraph.verticesCount()); // 5
-console.log(graph.verticesCount()); // 5
+console.log(directedGraph.getVerticesCount()); // 5
+console.log(graph.getVerticesCount()); // 5
 ```
 
 ### .addEdge(srcKey, destKey, weight)
@@ -236,7 +219,7 @@ console.log(graph.hasEdge('v1', 'v2')); // true
 console.log(graph.hasEdge('v2', 'v1')); // true
 ```
 
-### .edgesCount()
+### .getEdgesCount()
 gets the number of edges in the graph.
 
 <table>
@@ -259,8 +242,8 @@ gets the number of edges in the graph.
 #### Example
 
 ```js
-console.log(directedGraph.edgesCount()); // 7
-console.log(graph.edgesCount()); // 7
+console.log(directedGraph.getEdgesCount()); // 7
+console.log(graph.getEdgesCount()); // 7
 ```
 
 ### .getWeight(srcKey, destKey)
@@ -330,12 +313,12 @@ removes a vertex with all its edges from the graph by its key.
 
 ```js
 directedGraph.removeVertex('v5');
-console.log(directedGraph.verticesCount()); // 4
-console.log(directedGraph.edgesCount()); // 5
+console.log(directedGraph.getVerticesCount()); // 4
+console.log(directedGraph.getEdgesCount()); // 5
 
 graph.removeVertex('v5');
-console.log(graph.verticesCount()); // 4
-console.log(graph.edgesCount()); // 5
+console.log(graph.getVerticesCount()); // 4
+console.log(graph.getEdgesCount()); // 5
 ```
 
 ### .removeEdge(srcKey, destKey)
@@ -367,10 +350,10 @@ removes an edge between two existing vertices
 #### Example
 ```js
 directedGraph.removeEdge('v1', 'v3'); // true
-console.log(directedGraph.edgesCount()); // 4
+console.log(directedGraph.getEdgesCount()); // 4
 
 graph.removeEdge('v2', 'v3'); // true
-console.log(graph.edgesCount()); // 4
+console.log(graph.getEdgesCount()); // 4
 ```
 
 ### .removeEdges(key)
@@ -507,12 +490,12 @@ clears all vertices and edges in the graph.
 
 ```js
 directedGraph.clear();
-console.log(directedGraph.verticesCount()); // 0
-console.log(directedGraph.edgesCount()); // 0
+console.log(directedGraph.getVerticesCount()); // 0
+console.log(directedGraph.getEdgesCount()); // 0
 
 graph.clear();
-console.log(graph.verticesCount()); // 0
-console.log(graph.edgesCount()); // 0
+console.log(graph.getVerticesCount()); // 0
+console.log(graph.getEdgesCount()); // 0
 ```
 
 ### Vertex
