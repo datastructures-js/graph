@@ -147,7 +147,7 @@ adds a weighted edge between two existings vertices. Default weight is 1 if not 
     <th align="center">runtime</th>
   </tr>
   <tr>
-    <td align="center">
+    <td>
       srcKey: number | string
       <br />
       destKey: number | string
@@ -183,29 +183,21 @@ graph
 checks if the graph has an edge between two existing vertices. In directed graph, it returns true only if there is a direction from source to destination.
 
 <table>
-  <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
-  <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
-  <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td>
+      srcKey: number | string
+      <br />
+      destKey: number | string
+    </td>
+    <td align="center">boolean</td>
+    <td align="center">O(1)</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th></tr>
- <tr>
-  <td>boolean</td>
- </tr>
-</table>
-
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr>
-  <td>O(1)</td>
- </tr>
-</table>
-
-#### Example
 
 ```js
 console.log(directedGraph.hasEdge('v1', 'v2')); // true
@@ -219,23 +211,20 @@ console.log(graph.hasEdge('v2', 'v1')); // true
 gets the number of edges in the graph.
 
 <table>
- <tr><th>return</th></tr>
- <tr>
-  <td>number</td>
- </tr>
+  <tr>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td>
+      srcKey: number | string
+      <br />
+      destKey: number | string
+    </td>
+    <td align="center">number</td>
+    <td align="center">O(1)</td>
+  </tr>
 </table>
-
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr>
-  <td>O(1)</td>
- </tr>
-</table>
-
-
-#### Example
 
 ```js
 console.log(directedGraph.getEdgesCount()); // 7
@@ -243,32 +232,24 @@ console.log(graph.getEdgesCount()); // 7
 ```
 
 ### .getWeight(srcKey, destKey)
-gets the edge's weight between two vertices in the graph. If there is no direct edge between the two vertices, it returns null. It also returns 0 if the source key is equal to destination key.
+gets the edge's weight between two vertices. If there is no direct edge between the two vertices, it returns `Infinity`. It also returns 0 if the source key is equal to destination key.
 
 <table>
-  <tr><th align="center" colspan="3">params</th></tr>
-  <tr><td><b>name</b></td><td align="center"><b>type</b></td><td><b>description</b></td></tr>
-  <tr><td>srcKey</td><td>number or string</td><td>the source vertex key</td></tr>
-  <tr><td>destKey</td><td>number or string</td><td>the destination vertex key</td></tr>
+  <tr>
+    <th align="center">params</th>
+    <th align="center">return</th>
+    <th align="center">runtime</th>
+  </tr>
+  <tr>
+    <td>
+      srcKey: number | string
+      <br />
+      destKey: number | string
+    </td>
+    <td align="center">number</td>
+    <td align="center">O(1)</td>
+  </tr>
 </table>
-
-<table>
- <tr><th>return</th></tr>
- <tr>
-  <td>number</td>
- </tr>
-</table>
-
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr>
-  <td>O(1)</td>
- </tr>
-</table>
-
-#### Example
 
 ```js
 console.log(directedGraph.getWeight('v1', 'v2')); // 2
@@ -282,7 +263,7 @@ console.log(graph.getWeight('v1', 'v4')); // null
 ```
 
 ### .removeVertex(key)
-removes a vertex with all its edges from the graph by its key.
+removes a vertex with all its edges from the graph.
 
 <table>
   <tr><th align="center" colspan="3">params</th></tr>
