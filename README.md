@@ -80,7 +80,6 @@ Adds a vertex to the graph.
 ```js
 directedGraph
   .addVertex('v1', 1)
-  .addVertex('v1', 1)
   .addVertex('v2', 2)
   .addVertex('v3', 3)
   .addVertex('v4', 4)
