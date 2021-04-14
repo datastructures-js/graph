@@ -247,13 +247,13 @@ Gets the edge's weight between two vertices. If there is no direct edge between 
 
 ```js
 console.log(directedGraph.getWeight('v1', 'v2')); // 2
-console.log(directedGraph.getWeight('v2', 'v1')); // null
+console.log(directedGraph.getWeight('v2', 'v1')); // Infinity
 console.log(directedGraph.getWeight('v1', 'v1')); // 0
 
 console.log(graph.getWeight('v1', 'v2')); // 2
 console.log(graph.getWeight('v2', 'v1')); // 2
 console.log(graph.getWeight('v1', 'v1')); // 0
-console.log(graph.getWeight('v1', 'v4')); // null
+console.log(graph.getWeight('v1', 'v4')); // Infinity
 ```
 
 ### .removeVertex(key)
