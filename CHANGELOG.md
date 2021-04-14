@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - `addVertex` & `addEdge` now can be chained.
 - remove `Vertex` class overhead, simply use key-value.
+- getters.
 
 ### Fixed
 `.getWeight` now returns `Infinity` for two vertices that are not connected.
