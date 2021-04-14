@@ -26,7 +26,6 @@
   * [.traverseDfs(srcKey, cb)](#traversedfssrckey-cb)
   * [.traverseBfs(srcKey, cb)](#traversebfssrckey-cb)
   * [.clear()](#clear)
-  * [Vertex](#vertex)
  * [Build](#build)
  * [License](#license)
 
