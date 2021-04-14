@@ -137,7 +137,7 @@ console.log(graph.getVerticesCount()); // 5
 ```
 
 ### .addEdge(srcKey, destKey, weight)
-Adds a weighted edge between two existings vertices. Default weight is 1 if not defined. The edge is a direction from source to destination when added in a directed graph, and a two-way connection when added in a graph.
+Adds a weighted edge between two existings vertices. Default weight is 1 if not defined. The single edge is a direction from source to destination in a directed graph, and a two-way connection in a graph.
 
 <table>
   <tr>
