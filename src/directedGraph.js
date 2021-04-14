@@ -70,7 +70,7 @@ class DirectedGraph {
    * @public
    * @param {number|string} srcKey
    * @param {number|string} destKey
-   * @param {number} weight
+   * @param {number} [weight] - default 1
    */
   addEdge(srcKey, destKey, weight) {
     if (!this._vertices.has(srcKey)) {
@@ -80,6 +80,11 @@ class DirectedGraph {
     if (!this._vertices.has(destKey)) {
       throw new Error(`addEdge: vertex "${destKey}" not found`);
     }
+
+    if (weight && Number.isNaN(+weight)) {
+      throw new Error('addEdge: expects a numberic weight');
+    }
+
     const w = Number.isNaN(+weight) ? 1 : +weight;
     this._edges.get(srcKey).set(destKey, w);
     this._edgesCount += 1;
@@ -112,7 +117,7 @@ class DirectedGraph {
 
     if (this.hasVertex(srcKey) && srcKey === destKey) {
       return 0;
-    } 
+    }
 
     return this._edges.get(srcKey).get(destKey);
   }

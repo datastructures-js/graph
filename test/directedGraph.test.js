@@ -98,7 +98,7 @@ describe('DirectedGraph unit tests', () => {
   describe('.traverseDfs(srcKey, cb)', () => {
     it('traverse the graph from a starting vertex using DFS', () => {
       const vertices = [];
-      directedGraph.traverseDfs('v1', (k, v) => vertices.push(k));
+      directedGraph.traverseDfs('v1', (k) => vertices.push(k));
       expect(vertices).to.deep.equal(['v1', 'v2', 'v4', 'v3', 'v5']);
     });
   });
