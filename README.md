@@ -23,7 +23,7 @@
   * [.getWeight(srcKey, destKey)](#getweightsrcKey-destKey)
   * [.removeVertex(key)](#removevertexkey)
   * [.removeEdge(srcKey, destKey)](#removeedgesrckey-destkey)
-  * [.removeEdge(key)](#removeedgekey)
+  * [.removeEdges(key)](#removeedgeskey)
   * [.traverseDfs(srcKey, cb)](#traversedfssrckey-cb)
   * [.traverseBfs(srcKey, cb)](#traversebfssrckey-cb)
   * [.clear()](#clear)
