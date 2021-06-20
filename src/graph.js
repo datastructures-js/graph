@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-const DirectedGraph = require('./directedGraph');
+const { DirectedGraph } = require('./directedGraph');
 
 /**
  * @class Graph
@@ -71,4 +71,4 @@ class Graph extends DirectedGraph {
   }
 }
 
-module.exports = Graph;
+exports.Graph = Graph;

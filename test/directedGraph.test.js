@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
-const DirectedGraph = require('../src/directedGraph');
+const { DirectedGraph } = require('../src/directedGraph');
 
 describe('DirectedGraph unit tests', () => {
   const directedGraph = new DirectedGraph();

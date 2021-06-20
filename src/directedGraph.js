@@ -179,15 +179,18 @@ class DirectedGraph {
    * @param {number|string} srcKey - starting node
    * @param {function} cb
    */
-  traverseDfs(srcKey, cb, visited = new Set()) {
-    if (!this.hasVertex(srcKey) || visited.has(srcKey)) return;
+  traverseDfs(srcKey, cb) {
+    const traverseDfsRecursive = (key, visited = new Set()) => {
+      if (!this.hasVertex(key) || visited.has(key)) return;
 
-    cb(srcKey, this._vertices.get(srcKey));
-    visited.add(srcKey);
+      cb(key, this._vertices.get(key));
+      visited.add(key);
 
-    this._edges.get(srcKey).forEach((weight, destKey) => {
-      this.traverseDfs(destKey, cb, visited);
-    });
+      this._edges.get(key).forEach((weight, destKey) => {
+        traverseDfsRecursive(destKey, visited);
+      });
+    };
+    traverseDfsRecursive(srcKey);
   }
 
   /**
@@ -225,4 +228,4 @@ class DirectedGraph {
   }
 }
 
-module.exports = DirectedGraph;
+exports.DirectedGraph = DirectedGraph;

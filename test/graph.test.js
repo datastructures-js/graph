@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 
-const Graph = require('../src/graph');
+const { Graph } = require('../src/graph');
 
 describe('Graph unit tests', () => {
   const graph = new Graph();
