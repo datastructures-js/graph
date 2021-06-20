@@ -1,7 +1,7 @@
 export class DirectedGraph<T extends number|string, U = undefined> {
   addVertex(key: T, value: U): DirectedGraph<T, U>;
   hasVertex(key: T): boolean;
-  removeVErtex(key: T): boolean;
+  removeVertex(key: T): boolean;
   getVerticesCount(): number;
   addEdge(srcKey: T, destKey: T, weight?: number): DirectedGraph<T, U>;
   hasEdge(srcKey: T, destKey: T): boolean;
