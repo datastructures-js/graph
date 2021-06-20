@@ -4,16 +4,20 @@
 [![npm](https://img.shields.io/npm/v/@datastructures-js/graph.svg)](https://www.npmjs.com/package/@datastructures-js/graph)
 [![npm](https://img.shields.io/npm/dm/@datastructures-js/graph.svg)](https://www.npmjs.com/package/@datastructures-js/graph) [![npm](https://img.shields.io/badge/node-%3E=%206.0-blue.svg)](https://www.npmjs.com/package/@datastructures-js/graph)
 
+Graph & Directed Graph implementation in javascript.
+
+<img src="https://user-images.githubusercontent.com/6517308/121813242-859a9700-cc6b-11eb-99c0-49e5bb63005b.jpg">
+
 <table><tr><td>
   <img alt="graph" src="https://user-images.githubusercontent.com/6517308/71645678-802cd500-2ca1-11ea-96fb-11a71fd95191.jpg">
 </td></tr></table>
 
-# Table of Contents
+# Contents
 * [Install](#install)
+* [require](#require)
+* [import](#import)
 * [API](#api)
-  * [require](#require)
-  * [import](#import)
-  * [new](#new)
+  * [constructor](#constructor)
   * [.addVertex(key, value)](#addvertexkey-value)
   * [.hasVertex(key)](#hasvvertex-key)
   * [.getVerticesCount()](#getverticescount)
@@ -35,8 +39,6 @@
 npm install --save @datastructures-js/graph
 ```
 
-## API
-
 ### require
 
 ```js
@@ -49,13 +51,25 @@ const { Graph, DirectedGraph } = require('@datastructures-js/graph');
 import { Graph, DirectedGraph } from '@datastructures-js/graph';
 ```
 
-### new
+## API
+
+### constructor
 Creates a new graph
 
+##### JS
 ```js
 const directedGraph = new DirectedGraph();
 
 const graph = new Graph();
+```
+
+##### TS
+```js
+// DirectedGraph<T extends number|string, U = undefined>
+const directedGraph = new DirectedGraph<number, { id: string, someProp: any }>();
+
+// Graph<T extends number|string, U = undefined>
+const graph = new Graph<string, number>();
 ```
 
 ### .addVertex(key, value)
@@ -69,11 +83,11 @@ Adds a vertex to the graph.
   </tr>
   <tr>
     <td>
-      key: number | string
+      key: T (number | string)
       <br />
-      value: any
+      value: U
     </td>
-    <td align="center">Graph | DirectedGraph</td>
+    <td align="center">Graph&lt;T, U&gt; | DirectedGraph&lt;T, U&gt;</td>
     <td align="center">O(1)</td>
   </tr>
 </table>
@@ -105,7 +119,7 @@ Checks if the graph has a vertex by its key.
   </tr>
   <tr>
     <td>
-      key: number | string
+      key: T (number | string)
     </td>
     <td align="center">boolean</td>
     <td align="center">O(1)</td>
@@ -147,13 +161,13 @@ Adds a weighted edge between two existings vertices. Default weight is 1 if not 
   </tr>
   <tr>
     <td>
-      srcKey: number | string
+      srcKey: T (number | string)
       <br />
-      destKey: number | string
+      destKey: T (number | string)
       <br />
       weight: number
     </td>
-    <td align="center">Graph | DirectedGraph</td>
+    <td align="center">Graph&lt;T, U&gt; | DirectedGraph&lt;T, U&gt;</td>
     <td align="center">O(1)</td>
   </tr>
 </table>
@@ -189,9 +203,9 @@ Checks if the graph has an edge between two existing vertices. In directed graph
   </tr>
   <tr>
     <td>
-      srcKey: number | string
+      srcKey: T (number | string)
       <br />
-      destKey: number | string
+      destKey: T (number | string)
     </td>
     <td align="center">boolean</td>
     <td align="center">O(1)</td>
@@ -236,9 +250,9 @@ Gets the edge's weight between two vertices. If there is no direct edge between 
   </tr>
   <tr>
     <td>
-      srcKey: number | string
+      srcKey: T (number | string)
       <br />
-      destKey: number | string
+      destKey: T (number | string)
     </td>
     <td align="center">number</td>
     <td align="center">O(1)</td>
@@ -267,7 +281,7 @@ Removes a vertex with all its edges from the graph.
   </tr>
   <tr>
     <td>
-      key: number | string
+      key: T (number | string)
     </td>
     <td align="center">boolean</td>
     <td>
@@ -299,9 +313,9 @@ Removes an edge between two existing vertices
   </tr>
   <tr>
     <td>
-      srcKey: number | string
+      srcKey: T (number | string)
       <br />
-      destKey: number | string
+      destKey: T (number | string)
     </td>
     <td align="center">boolean</td>
     <td align="center">O(1)</td>
@@ -327,7 +341,7 @@ Removes all connected edges to a vertex and returns the number of removed edges.
   </tr>
   <tr>
     <td>
-      key: number | string
+      key: T (number | string)
     </td>
     <td align="center">number</td>
     <td>
@@ -367,9 +381,9 @@ Traverses the graph using the depth-first recursive search.
   </tr>
   <tr>
     <td>
-      srcKey: number | string
+      srcKey: T (number | string)
       <br />
-      cb: function
+      cb: (key: T, value: U) => void
     </td>
     <td>
       O(V) : V = number of vertices in the graph
@@ -405,9 +419,9 @@ Traverses the graph using the breadth-first search with a queue.
   </tr>
   <tr>
     <td>
-      srcKey: number | string
+      srcKey: T (number | string)
       <br />
-      cb: function
+      cb: (key: T, value: U) => void
     </td>
     <td>
       O(V) : V = number of vertices in the graph
