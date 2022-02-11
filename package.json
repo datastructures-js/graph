@@ -1,6 +1,6 @@
 {
   "name": "@datastructures-js/graph",
-  "version": "5.1.2",
+  "version": "5.1.3",
   "description": "graph & directed graph implementation in javascript",
   "main": "index.js",
   "scripts": {
