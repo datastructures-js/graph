@@ -5,7 +5,7 @@ export class DirectedGraph<T extends number|string, U = undefined> {
   getVerticesCount(): number;
   addEdge(srcKey: T, destKey: T, weight?: number): DirectedGraph<T, U>;
   hasEdge(srcKey: T, destKey: T): boolean;
-  getWeight(): number;
+  getWeight(srcKey: T, destKey: T): number;
   removeEdge(srcKey: T, destKey: T): boolean;
   removeEdges(key: T): number;
   getEdgesCount(): number;
