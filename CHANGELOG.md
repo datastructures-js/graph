@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [v5.1.2] - 2022-02-11
 ### Fixed
-- directedGraph.d.ts getWeight type definition.
+- getWeight type definition.
 
 ## [v5.1.1] - 2021-06-20
 ### Fixed
