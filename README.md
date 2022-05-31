@@ -8,29 +8,25 @@ Graph & Directed Graph implementation in javascript.
 
 <img src="https://user-images.githubusercontent.com/6517308/121813242-859a9700-cc6b-11eb-99c0-49e5bb63005b.jpg">
 
-<table><tr><td>
-  <img alt="graph" src="https://user-images.githubusercontent.com/6517308/71645678-802cd500-2ca1-11ea-96fb-11a71fd95191.jpg">
-</td></tr></table>
-
 # Contents
 * [Install](#install)
 * [require](#require)
 * [import](#import)
 * [API](#api)
   * [constructor](#constructor)
-  * [.addVertex(key, value)](#addvertexkey-value)
-  * [.hasVertex(key)](#hasvvertex-key)
-  * [.getVerticesCount()](#getverticescount)
-  * [.addEdge(srcKey, destKey, weight)](#addedgesrckey-destkey-weight)
-  * [.hasEdge(srcKey, destKey)](#hasedgesrckey-destkey)
-  * [.getEdgesCount()](#getedgescount)
-  * [.getWeight(srcKey, destKey)](#getweightsrcKey-destKey)
-  * [.removeVertex(key)](#removevertexkey)
-  * [.removeEdge(srcKey, destKey)](#removeedgesrckey-destkey)
-  * [.removeEdges(key)](#removeedgeskey)
-  * [.traverseDfs(srcKey, cb)](#traversedfssrckey-cb)
-  * [.traverseBfs(srcKey, cb)](#traversebfssrckey-cb)
-  * [.clear()](#clear)
+  * [addVertex](#addvertexkey)
+  * [hasVertex](#hasvvertex)
+  * [getVerticesCount](#getverticescount)
+  * [addEdge](#addedge)
+  * [hasEdge](#hasedge)
+  * [getEdgesCount](#getedgescount)
+  * [getWeight](#getweight)
+  * [removeVertex](#removevertex)
+  * [removeEdge](#removeedge)
+  * [removeEdges](#removeedges)
+  * [traverseDfs](#traversedfs)
+  * [traverseBfs](#traversebfs)
+  * [clear](#clear)
  * [Build](#build)
  * [License](#license)
 
@@ -72,25 +68,8 @@ const directedGraph = new DirectedGraph<number, { id: string, someProp: any }>()
 const graph = new Graph<string, number>();
 ```
 
-### .addVertex(key, value)
+### addVertex
 Adds a vertex to the graph.
-
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      key: T (number | string)
-      <br />
-      value: U
-    </td>
-    <td align="center">Graph&lt;T, U&gt; | DirectedGraph&lt;T, U&gt;</td>
-    <td align="center">O(1)</td>
-  </tr>
-</table>
 
 ```js
 directedGraph
@@ -108,69 +87,24 @@ graph
   .addVertex('v5', true);
 ```
 
-### .hasVertex(key)
+### hasVertex
 Checks if the graph has a vertex by its key.
-
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      key: T (number | string)
-    </td>
-    <td align="center">boolean</td>
-    <td align="center">O(1)</td>
-  </tr>
-</table>
 
 ```js
 console.log(directedGraph.hasVertex('v7')); // false
 console.log(graph.hasVertex('v1')); // true
 ```
 
-### .getVerticesCount()
+### getVerticesCount
 Gets the number of vertices in the graph.
-
-<table>
-  <tr>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td align="center">number</td>
-    <td align="center">O(1)</td>
-  </tr>
-</table>
 
 ```js
 console.log(directedGraph.getVerticesCount()); // 5
 console.log(graph.getVerticesCount()); // 5
 ```
 
-### .addEdge(srcKey, destKey, weight)
+### addEdge
 Adds a weighted edge between two existings vertices. Default weight is 1 if not defined. The single edge is a direction from source to destination in a directed graph, and a two-way connection in a graph.
-
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      srcKey: T (number | string)
-      <br />
-      destKey: T (number | string)
-      <br />
-      weight: number
-    </td>
-    <td align="center">Graph&lt;T, U&gt; | DirectedGraph&lt;T, U&gt;</td>
-    <td align="center">O(1)</td>
-  </tr>
-</table>
 
 ```js
 directedGraph
@@ -192,25 +126,8 @@ graph
   .addEdge('v3', 'v5', 2);
 ```
 
-### .hasEdge(srcKey, destKey)
+### hasEdge
 Checks if the graph has an edge between two existing vertices. In directed graph, it returns true only if there is a direction from source to destination.
-
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      srcKey: T (number | string)
-      <br />
-      destKey: T (number | string)
-    </td>
-    <td align="center">boolean</td>
-    <td align="center">O(1)</td>
-  </tr>
-</table>
 
 ```js
 console.log(directedGraph.hasEdge('v1', 'v2')); // true
@@ -220,44 +137,16 @@ console.log(graph.hasEdge('v1', 'v2')); // true
 console.log(graph.hasEdge('v2', 'v1')); // true
 ```
 
-### .getEdgesCount()
+### getEdgesCount
 Gets the number of edges in the graph.
-
-<table>
-  <tr>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td align="center">number</td>
-    <td align="center">O(1)</td>
-  </tr>
-</table>
 
 ```js
 console.log(directedGraph.getEdgesCount()); // 7
 console.log(graph.getEdgesCount()); // 7
 ```
 
-### .getWeight(srcKey, destKey)
+### getWeight
 Gets the edge's weight between two vertices. If there is no direct edge between the two vertices, it returns `Infinity`. It also returns 0 if the source key is equal to destination key.
-
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      srcKey: T (number | string)
-      <br />
-      destKey: T (number | string)
-    </td>
-    <td align="center">number</td>
-    <td align="center">O(1)</td>
-  </tr>
-</table>
 
 ```js
 console.log(directedGraph.getWeight('v1', 'v2')); // 2
@@ -270,27 +159,8 @@ console.log(graph.getWeight('v1', 'v1')); // 0
 console.log(graph.getWeight('v1', 'v4')); // Infinity
 ```
 
-### .removeVertex(key)
+### removeVertex
 Removes a vertex with all its edges from the graph.
-
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      key: T (number | string)
-    </td>
-    <td align="center">boolean</td>
-    <td>
-      Graph: O(K) : K = number of connected edges to the vertex
-      <br />
-      DirectedGraph: O(E) : E = number of edges in the graph
-    </td>
-  </tr>
-</table>
 
 ```js
 directedGraph.removeVertex('v5');
@@ -302,25 +172,8 @@ console.log(graph.getVerticesCount()); // 4
 console.log(graph.getEdgesCount()); // 5
 ```
 
-### .removeEdge(srcKey, destKey)
+### removeEdge
 Removes an edge between two existing vertices
-
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      srcKey: T (number | string)
-      <br />
-      destKey: T (number | string)
-    </td>
-    <td align="center">boolean</td>
-    <td align="center">O(1)</td>
-  </tr>
-</table>
 
 ```js
 directedGraph.removeEdge('v1', 'v3'); // true
@@ -330,27 +183,8 @@ graph.removeEdge('v2', 'v3'); // true
 console.log(graph.getEdgesCount()); // 4
 ```
 
-### .removeEdges(key)
+### removeEdges
 Removes all connected edges to a vertex and returns the number of removed edges.
-
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">return</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      key: T (number | string)
-    </td>
-    <td align="center">number</td>
-    <td>
-      Graph: O(K) : K = number of connected edges to the vertex
-      <br />
-      DirectedGraph: O(E) : E = number of edges in the graph
-    </td>
-  </tr>
-</table>
 
 ```js
 const dg = new DirectedGraph()
@@ -371,7 +205,7 @@ const g = new Graph()
   .removeEdges('v1'); // 2
 ```
 
-### .traverseDfs(srcKey, cb)
+### traverseDfs
 Traverses the graph using the depth-first recursive search.
 
 <table>
@@ -409,25 +243,8 @@ v3: true
 */
 ```
 
-### .traverseBfs(srcKey, cb)
+### traverseBfs
 Traverses the graph using the breadth-first search with a queue.
-
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      srcKey: T (number | string)
-      <br />
-      cb: (key: T, value: U) => void
-    </td>
-    <td>
-      O(V) : V = number of vertices in the graph
-    </td>
-  </tr>
-</table>
 
 ```js
 directedGraph.traverseBfs('v1', (key, value) => console.log(`${key}: ${value}`));
@@ -447,7 +264,7 @@ v4: true
 */
 ```
 
-### .clear()
+### clear
 Clears all vertices and edges in the graph.
 
 <table>
