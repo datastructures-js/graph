@@ -208,23 +208,6 @@ const g = new Graph()
 ### traverseDfs
 Traverses the graph using the depth-first recursive search.
 
-<table>
-  <tr>
-    <th align="center">params</th>
-    <th align="center">runtime</th>
-  </tr>
-  <tr>
-    <td>
-      srcKey: T (number | string)
-      <br />
-      cb: (key: T, value: U) => void
-    </td>
-    <td>
-      O(V) : V = number of vertices in the graph
-    </td>
-  </tr>
-</table>
-
 ```js
 directedGraph.traverseDfs('v1', (key, value) => console.log(`${key}: ${value}`));
 /*
@@ -266,15 +249,6 @@ v4: true
 
 ### clear
 Clears all vertices and edges in the graph.
-
-<table>
- <tr>
-  <th>runtime</th>
- </tr>
- <tr>
-  <td>O(1)</td>
- </tr>
-</table>
 
 ```js
 directedGraph.clear();
