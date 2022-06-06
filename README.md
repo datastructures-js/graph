@@ -14,7 +14,7 @@ Graph & Directed Graph implementation in javascript.
 * [import](#import)
 * [API](#api)
   * [constructor](#constructor)
-  * [addVertex](#addvertexkey)
+  * [addVertex](#addvertex)
   * [hasVertex](#hasvvertex)
   * [getVerticesCount](#getverticescount)
   * [addEdge](#addedge)
