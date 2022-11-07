@@ -20,6 +20,8 @@ Graph & Directed Graph implementation in javascript.
   * [hasEdge](#hasedge)
   * [getEdgesCount](#getedgescount)
   * [getWeight](#getweight)
+  * [getConnectedVertices](#getconnectedvertices)
+  * [getConnectedEdges](#getconnectededges)
   * [removeVertex](#removevertex)
   * [removeEdge](#removeedge)
   * [removeEdges](#removeedges)
@@ -156,6 +158,22 @@ console.log(graph.getWeight('v1', 'v2')); // 2
 console.log(graph.getWeight('v2', 'v1')); // 2
 console.log(graph.getWeight('v1', 'v1')); // 0
 console.log(graph.getWeight('v1', 'v4')); // Infinity
+```
+
+### getConnectedVertices
+Returns a list of keys of vertices connected to a given vertex.
+
+```js
+console.log(directedGraph.getConnectedVertices('v4')); // ['v3', 'v5']
+console.log(graph.getConnectedVertices('v1')); // ['v2', 'v3']
+```
+
+### getConnectedEdges
+Returns an object of keys of vertices connected to a given vertex with their edges weight.
+
+```js
+console.log(directedGraph.getConnectedEdges('v4')); // { v3: 1, v5: 4 }
+console.log(graph.getConnectedEdges('v1')); // { v2: 2, v3: 6 }
 ```
 
 ### removeVertex

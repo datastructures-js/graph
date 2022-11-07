@@ -62,9 +62,24 @@ describe('Graph unit tests', () => {
     });
   });
 
+  describe('.getConnectedVertices(key)', () => {
+    it('should the connected vertices keys from a give key', () => {
+      expect(graph.getConnectedVertices('v1')).to.eql(['v2', 'v3']);
+    });
+  });
+
   describe('getEdgesCount()', () => {
     it('get the edges count', () => {
       expect(graph.getEdgesCount()).to.equal(7);
+    });
+  });
+
+  describe('.getConnectedEdges(key)', () => {
+    it('should the connected edges from a give key', () => {
+      expect(graph.getConnectedEdges('v1')).to.eql({
+        v2: 2,
+        v3: 6
+      });
     });
   });
 

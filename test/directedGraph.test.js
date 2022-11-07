@@ -74,9 +74,24 @@ describe('DirectedGraph unit tests', () => {
     });
   });
 
+  describe('.getConnectedVertices(key)', () => {
+    it('should the connected vertices keys from a give key', () => {
+      expect(directedGraph.getConnectedVertices('v4')).to.eql(['v3', 'v5']);
+    });
+  });
+
   describe('getEdgesCount()', () => {
     it('get the edges count', () => {
       expect(directedGraph.getEdgesCount()).to.equal(7);
+    });
+  });
+
+  describe('.getConnectedEdges(key)', () => {
+    it('should the connected edges from a give key', () => {
+      expect(directedGraph.getConnectedEdges('v4')).to.eql({
+        v3: 1,
+        v5: 4
+      });
     });
   });
 

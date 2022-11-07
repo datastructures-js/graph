@@ -66,6 +66,34 @@ class DirectedGraph {
   }
 
   /**
+   * Returns the vertices connected to a given vertex
+   * @public
+   * @return {array}
+   */
+  getConnectedVertices(key) {
+    if (!this._edges.has(key)) return [];
+
+    const result = [];
+    this._edges.get(key).forEach((w, k) => result.push(k));
+    return result;
+  }
+
+  /**
+   * Returns the vertices connected to a given vertex
+   * @public
+   * @return {array}
+   */
+  getConnectedEdges(key) {
+    if (!this._edges.has(key)) return {};
+
+    const result = {};
+    this._edges.get(key).forEach((w, k) => {
+      result[k] = w;
+    });
+    return result;
+  }
+
+  /**
    * Adds a directed edge from a source vertex to a destination
    * @public
    * @param {number|string} srcKey
