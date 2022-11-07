@@ -126,7 +126,14 @@ directedGraph
   .addEdge('v4', 'v3', 1)
   .addEdge('v4', 'v5', 4);
 
-graph.addEdge('v1', 'v2', 2).addEdge('v2', 'v3', 3).addEdge('v1', 'v3', 6).addEdge('v2', 'v4', 1).addEdge('v4', 'v3', 1).addEdge('v4', 'v5', 4).addEdge('v3', 'v5', 2);
+graph
+  .addEdge('v1', 'v2', 2)
+  .addEdge('v2', 'v3', 3)
+  .addEdge('v1', 'v3', 6)
+  .addEdge('v2', 'v4', 1)
+  .addEdge('v4', 'v3', 1)
+  .addEdge('v4', 'v5', 4)
+  .addEdge('v3', 'v5', 2);
 ```
 
 ### hasEdge
