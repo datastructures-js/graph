@@ -11,7 +11,7 @@ export class DirectedGraph<T extends number|string, U = undefined> {
   removeEdges(key: T): number;
   getEdgesCount(): number;
   getConnectedEdges(key: T): { [key: T]: number };
-  traverseDfs(srcKey: T, cb: (key: T, value: U) => void): void;
-  traverseBfs(srcKey: T, cb: (key: T, value: U) => void): void;
+  traverseDfs(srcKey: T, cb: (key: T, value: U) => void, abortCb?: () => boolean): void;
+  traverseBfs(srcKey: T, cb: (key: T, value: U) => void, abortCb?: () => boolean): void;
   clear(): void;
 }

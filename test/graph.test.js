@@ -97,19 +97,39 @@ describe('Graph unit tests', () => {
     });
   });
 
-  describe('.traverseDfs(key, cb, type)', () => {
+  describe('.traverseDfs(key, cb, abortCb)', () => {
     it('should traverse the graph from a starting vertex using DFS', () => {
       const vertices = [];
       graph.traverseDfs('v1', (k) => vertices.push(k));
       expect(vertices).to.deep.equal(['v1', 'v2', 'v3', 'v4', 'v5']);
     });
+
+    it('traverse the graph using DFS and allow aborting traversal', () => {
+      const vertices = [];
+      let counter = 0;
+      graph.traverseDfs('v1', (k) => {
+        vertices.push(k);
+        counter += 1;
+      }, () => counter > 2);
+      expect(vertices).to.deep.equal(['v1', 'v2', 'v3']);
+    });
   });
 
-  describe('.traverseBfs(key, cb)', () => {
+  describe('.traverseBfs(key, cb, abortCb)', () => {
     it('should traverse the graph from a starting vertex using BFS', () => {
       const keys = [];
       graph.traverseBfs('v5', (k) => keys.push(k));
       expect(keys).to.deep.equal(['v5', 'v4', 'v3', 'v2', 'v1']);
+    });
+
+    it('traverse the graph using BFS and allow aborting traversal', () => {
+      const keys = [];
+      let counter = 0;
+      graph.traverseBfs('v5', (k) => {
+        keys.push(k);
+        counter += 1;
+      }, () => counter > 2);
+      expect(keys).to.deep.equal(['v5', 'v4', 'v3']);
     });
   });
 

@@ -110,15 +110,25 @@ describe('DirectedGraph unit tests', () => {
     });
   });
 
-  describe('.traverseDfs(srcKey, cb)', () => {
+  describe('.traverseDfs(srcKey, cb, abortCb)', () => {
     it('traverse the graph from a starting vertex using DFS', () => {
       const vertices = [];
       directedGraph.traverseDfs('v1', (k) => vertices.push(k));
       expect(vertices).to.deep.equal(['v1', 'v2', 'v4', 'v3', 'v5']);
     });
+
+    it('traverse the graph using DFS and allow aborting traversal', () => {
+      const keys = [];
+      let counter = 0;
+      directedGraph.traverseBfs('v1', (k) => {
+        keys.push(k);
+        counter += 1;
+      }, () => counter > 2);
+      expect(keys).to.deep.equal(['v1', 'v2', 'v3']);
+    });
   });
 
-  describe('.traverseBfs(srcKey, cb)', () => {
+  describe('.traverseBfs(srcKey, cb, abortCb)', () => {
     it('does nothing when vertex does not exist', () => {
       const cb = sinon.spy();
       directedGraph.traverseBfs('n1', cb);
@@ -134,6 +144,16 @@ describe('DirectedGraph unit tests', () => {
       });
       expect(keys).to.deep.equal(['v1', 'v2', 'v3', 'v4', 'v5']);
       expect(values).to.deep.equal([1, 2, 3, 4, 5]);
+    });
+
+    it('traverse the graph using BFS and allow aborting traversal', () => {
+      const keys = [];
+      let counter = 0;
+      directedGraph.traverseBfs('v1', (k) => {
+        keys.push(k);
+        counter += 1;
+      }, () => counter > 2);
+      expect(keys).to.deep.equal(['v1', 'v2', 'v3']);
     });
   });
 
