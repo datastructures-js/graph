@@ -42,6 +42,16 @@ class DirectedGraph {
   }
 
   /**
+   * returns vertex value
+   * @public
+   * @param {number|string} key
+   * @return {object}
+   */
+  getVertexValue(key) {
+    return this._vertices.get(key);
+  }
+
+  /**
    * Removes a vertex and all its edges from the graph
    * @public
    * @param {number|string} key

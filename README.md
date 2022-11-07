@@ -15,6 +15,7 @@ Graph & Directed Graph implementation in javascript.
   * [constructor](#constructor)
   * [addVertex](#addvertex)
   * [hasVertex](#hasvertex)
+  * [getVertexValue](#getvertexvalue)
   * [getVerticesCount](#getverticescount)
   * [addEdge](#addedge)
   * [hasEdge](#hasedge)
@@ -94,6 +95,14 @@ Checks if the graph has a vertex by its key.
 ```js
 console.log(directedGraph.hasVertex('v7')); // false
 console.log(graph.hasVertex('v1')); // true
+```
+
+### getVertexValue
+Returns the value associated with a vertex key.
+
+```js
+console.log(directedGraph.getVertexValue('v5')); // 5
+console.log(graph.getVertexValue('v1')); // true
 ```
 
 ### getVerticesCount
