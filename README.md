@@ -169,7 +169,7 @@ console.log(graph.getConnectedVertices('v1')); // ['v2', 'v3']
 ```
 
 ### getConnectedEdges
-Returns an object of keys of vertices connected to a given vertex with their edges weight.
+Returns an object of keys of vertices connected to a given vertex with the edges weight.
 
 ```js
 console.log(directedGraph.getConnectedEdges('v4')); // { v3: 1, v5: 4 }
