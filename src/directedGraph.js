@@ -66,6 +66,34 @@ class DirectedGraph {
   }
 
   /**
+   * Returns the vertices connected to a given vertex
+   * @public
+   * @return {array}
+   */
+  getConnectedVertices(key) {
+    if (!this._edges.has(key)) return [];
+
+    const result = [];
+    this._edges.get(key).forEach((w, k) => result.push(k));
+    return result;
+  }
+
+  /**
+   * Returns the edges connected to a given vertex
+   * @public
+   * @return {object}
+   */
+  getConnectedEdges(key) {
+    if (!this._edges.has(key)) return {};
+
+    const result = {};
+    this._edges.get(key).forEach((w, k) => {
+      result[k] = w;
+    });
+    return result;
+  }
+
+  /**
    * Adds a directed edge from a source vertex to a destination
    * @public
    * @param {number|string} srcKey
@@ -178,10 +206,13 @@ class DirectedGraph {
    * @public
    * @param {number|string} srcKey - starting node
    * @param {function} cb
+   * @param {function} abortCb
    */
-  traverseDfs(srcKey, cb) {
+  traverseDfs(srcKey, cb, abortCb) {
     const traverseDfsRecursive = (key, visited = new Set()) => {
-      if (!this.hasVertex(key) || visited.has(key)) return;
+      if (!this.hasVertex(key) || visited.has(key) || (abortCb && abortCb())) {
+        return;
+      }
 
       cb(key, this._vertices.get(key));
       visited.add(key);
@@ -198,14 +229,15 @@ class DirectedGraph {
    * @public
    * @param {number|string} srcKey - starting node
    * @param {function} cb
+   * @param {function} abortCb
    */
-  traverseBfs(srcKey, cb) {
+  traverseBfs(srcKey, cb, abortCb) {
     if (!this.hasVertex(srcKey)) return;
 
     const queue = new Queue([srcKey]);
     const visited = new Set([srcKey]);
 
-    while (!queue.isEmpty()) {
+    while (!queue.isEmpty() && (!abortCb || !abortCb())) {
       const nextKey = queue.dequeue();
       cb(nextKey, this._vertices.get(nextKey));
       this._edges.get(nextKey).forEach((weight, destKey) => {
