@@ -223,7 +223,7 @@ const g = new Graph()
 ```
 
 ### traverseDfs
-Traverses the graph from a starting vertex using the depth-first recursive search.
+Traverses the graph from a starting vertex using the depth-first recursive search. it also accepts an optional third param as a callback to abort traversal when it returns true.
 
 ```js
 directedGraph.traverseDfs('v1', (key, value) => console.log(`${key}: ${value}`));
@@ -241,10 +241,20 @@ v2: true
 v4: true
 v3: true
 */
+
+let counter = 0;
+graph.traverseDfs('v1', (key, value) => {
+  console.log(`${key}: ${value}`);
+  counter += 1;
+}, () => counter > 1);
+/*
+v1: true
+v2: true
+*/
 ```
 
 ### traverseBfs
-Traverses the graph from a starting vertex using the breadth-first search with a queue.
+Traverses the graph from a starting vertex using the breadth-first search with a queue. it also accepts an optional third param as a callback to abort traversal when it returns true.
 
 ```js
 directedGraph.traverseBfs('v1', (key, value) => console.log(`${key}: ${value}`));
@@ -261,6 +271,16 @@ v1: true
 v2: true
 v3: true
 v4: true
+*/
+
+let counter = 0;
+graph.traverseBfs('v1', (key, value) => {
+  console.log(`${key}: ${value}`);
+  counter += 1;
+}, () => counter > 1);
+/*
+v1: true
+v2: true
 */
 ```
 
