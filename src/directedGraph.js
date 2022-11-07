@@ -79,9 +79,9 @@ class DirectedGraph {
   }
 
   /**
-   * Returns the vertices connected to a given vertex
+   * Returns the edges connected to a given vertex
    * @public
-   * @return {array}
+   * @return {object}
    */
   getConnectedEdges(key) {
     if (!this._edges.has(key)) return {};
