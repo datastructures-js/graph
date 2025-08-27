@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [v5.3.1] - 2025-08-26
+### Fixed
+- README
+
 ## [v5.3.0] - 2022-11-07
 ### Added
 - `getVertexValue(key)` returns vertex value.
